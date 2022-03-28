@@ -15,8 +15,7 @@ struct CreationWordCardView: View {
     
     @Binding var dragToCenterProgress: Double
     
-    //TODO: check lofic of @GestureState wrapper.
-    @State private var dragValue: CGSize = .zero
+    @GestureState private var dragValue: CGSize = .zero
     @State private var isCreationActive: Bool = false
     
     var body: some View {
@@ -30,12 +29,14 @@ struct CreationWordCardView: View {
                         .offset(dragValue)
                         .gesture(
                             DragGesture()
+                                .updating($dragValue) { value, dragValueState, transaction in
+                                    dragValueState.height = value.translation.height
+                                }
                                 .onChanged {
                                     dragGestureChanged($0, proxy: geometryProxy)
                                 }
                                 .onEnded { _ in
                                     withAnimation(.spring()) {
-                                        dragValue = .zero
                                         dragToCenterProgress = isCreationActive ? 1.0 : 0.0
                                     }
                                 }
@@ -50,8 +51,8 @@ struct CreationWordCardView: View {
     
     func dragGestureChanged(_ dragValue: DragGesture.Value, proxy: GeometryProxy) {
         let dragGestureYOffset = dragValue.translation.height
-        self.dragValue.height = dragGestureYOffset
         
+        //TODO: dragToCenterProgress updated not as expected: after 0.99 we get 0.7 value. Investigate
         if dragGestureYOffset < 0 && !isCreationActive {
             dragToCenterProgress = min(1.0, Double(abs(dragGestureYOffset)) / Double(proxy.size.height/2))
         } else if dragGestureYOffset > 0 && isCreationActive {
