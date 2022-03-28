@@ -11,6 +11,10 @@
 		CE38C09227F0509D004B200D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C09127F0509D004B200D /* ContentView.swift */; };
 		CE38C09427F0509E004B200D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09327F0509E004B200D /* Assets.xcassets */; };
 		CE38C09727F0509E004B200D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09627F0509E004B200D /* Preview Assets.xcassets */; };
+		CE38C0A227F0A28C004B200D /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A127F0A28C004B200D /* WordCard.swift */; };
+		CE38C0A427F0A331004B200D /* WordCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A327F0A331004B200D /* WordCardFront.swift */; };
+		CE38C0A627F0A33E004B200D /* WordCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A527F0A33E004B200D /* WordCardBack.swift */; };
+		CEE6836C27F1A083004DE72B /* CreationWordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6836B27F1A083004DE72B /* CreationWordCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		CE38C09127F0509D004B200D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE38C09327F0509E004B200D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE38C09627F0509E004B200D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE38C0A127F0A28C004B200D /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
+		CE38C0A327F0A331004B200D /* WordCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardFront.swift; sourceTree = "<group>"; };
+		CE38C0A527F0A33E004B200D /* WordCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardBack.swift; sourceTree = "<group>"; };
+		CEE6836B27F1A083004DE72B /* CreationWordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationWordCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +59,10 @@
 		CE38C08E27F0509D004B200D /* wordLearning */ = {
 			isa = PBXGroup;
 			children = (
+				CEE3E9AE27F218DC00B5D445 /* WordCard */,
 				CE38C08F27F0509D004B200D /* wordLearningApp.swift */,
 				CE38C09127F0509D004B200D /* ContentView.swift */,
+				CEE6836B27F1A083004DE72B /* CreationWordCardView.swift */,
 				CE38C09327F0509E004B200D /* Assets.xcassets */,
 				CE38C09527F0509E004B200D /* Preview Content */,
 			);
@@ -65,6 +75,16 @@
 				CE38C09627F0509E004B200D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CEE3E9AE27F218DC00B5D445 /* WordCard */ = {
+			isa = PBXGroup;
+			children = (
+				CE38C0A127F0A28C004B200D /* WordCard.swift */,
+				CE38C0A327F0A331004B200D /* WordCardFront.swift */,
+				CE38C0A527F0A33E004B200D /* WordCardBack.swift */,
+			);
+			path = WordCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE38C0A227F0A28C004B200D /* WordCard.swift in Sources */,
+				CE38C0A627F0A33E004B200D /* WordCardBack.swift in Sources */,
+				CE38C0A427F0A331004B200D /* WordCardFront.swift in Sources */,
 				CE38C09227F0509D004B200D /* ContentView.swift in Sources */,
 				CE38C09027F0509D004B200D /* wordLearningApp.swift in Sources */,
+				CEE6836C27F1A083004DE72B /* CreationWordCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
