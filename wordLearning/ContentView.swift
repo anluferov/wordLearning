@@ -13,45 +13,52 @@ struct Preview: Identifiable {
 }
 
 struct ContentView: View {
-    @Namespace var namespace
-    
-    @State var dragCardsProgress: Double = 0.0
-    
+    @Namespace var newCardNamespace
+
+    @State var dragNewCardsProgress: Double = 0.0
+
     @State private var backOpacity: Double = 0.0
     @State private var isCardSavingInProgress: Bool = false
 
     var body: some View {
-
         ZStack {
-            if isCardSavingInProgress {
-                VStack() {
-                    HStack {
-                        WordCardFront()
-                            .matchedGeometryEffect(id: "wordCard", in: namespace)
-                            .frame(width: 150.0, height: 150.0)
-                            .padding(20.0)
-                        Spacer()
-                    }
-                    Spacer()
-                }
-            } else {
-                VStack() {
-                    HStack {
-                        WordCardFront()
-                            .frame(width: 150.0, height: 150.0)
-                            .padding(20.0)
-                        Spacer()
-                    }
-                    Spacer()
-                }
-            }
-
-            Color(.black)
-                .ignoresSafeArea()
-                .opacity(isCardSavingInProgress ? 0.0 : dragCardsProgress)
+//            if isCardSavingInProgress {
+//                VStack() {
+//                    HStack {
+//                        Rectangle()
+//                            .cornerRadius(20.0)
+//                            .foregroundColor(.white)
+//                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+//                            .matchedGeometryEffect(id: "wordCard", in: newCardNamespace)
+//                            .frame(width: 150.0, height: 150.0)
+//                            .padding(20.0)
+//                        Spacer()
+//                    }
+//                    Spacer()
+//                }
+//            } else {
+//                VStack() {
+//                    HStack {
+//                        Rectangle()
+//                            .cornerRadius(20.0)
+//                            .foregroundColor(.white)
+//                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+//                            .frame(width: 150.0, height: 150.0)
+//                            .padding(20.0)
+//                        Spacer()
+//                    }
+//                    Spacer()
+//                }
+//            }
+//
+//            Color(.black)
+//                .ignoresSafeArea()
+//                .opacity(isCardSavingInProgress ? 0.0 : dragNewCardsProgress)
+            
+            WordsDashboard(viewModel: WordsDashboardViewModel.init(), namespace: newCardNamespace)
 
             if !isCardSavingInProgress {
-                CreationWordCardView(namespace: namespace, dragToCenterProgress: $dragCardsProgress)
+                NewWordCard(viewModel: NewWordCardViewModel.init(), namespace: newCardNamespace)
             }
 
 
@@ -63,7 +70,7 @@ struct ContentView: View {
                 .onTapGesture {
                     withAnimation(.spring()) {
                         isCardSavingInProgress.toggle()
-                        
+
                         Task {
                             await delayToggle()
                         }
@@ -72,11 +79,11 @@ struct ContentView: View {
 
         }
     }
-    
+
     private func delayToggle() async {
         try? await Task.sleep(nanoseconds: 1_000_000_000)
-        
-        dragCardsProgress = 0.0
+
+        dragNewCardsProgress = 0.0
         isCardSavingInProgress.toggle()
     }
 }

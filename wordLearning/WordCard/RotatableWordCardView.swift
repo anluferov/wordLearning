@@ -7,25 +7,34 @@
 
 import SwiftUI
 
-struct WordCard: View {
+struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
     @State var backDegree = 0.0
     @State var frontDegree = -90.0
     @State var isFlipped = false
+    
+    private let frontContent: () -> FrontContent
+    private let backContent: () -> BackContent
+    
+    init(@ViewBuilder frontContent: @escaping () -> FrontContent,
+         @ViewBuilder backContent: @escaping () -> BackContent) {
+        self.frontContent = frontContent
+        self.backContent = backContent
+    }
 
     var body: some View {
         ZStack {
-            WordCardBack()
+            backContent()
                 .rotation3DEffect(Angle(degrees: frontDegree), axis: (x: 0, y: 1, z: 0))
-            WordCardFront()
+            frontContent()
                 .rotation3DEffect(Angle(degrees: backDegree), axis: (x: 0, y: 1, z: 0))
         }
         .onTapGesture {
-            flipCard ()
+            flipCard()
         }
     }
     
     func flipCard () {
-        isFlipped = !isFlipped
+        isFlipped.toggle()
         if isFlipped {
             withAnimation(.linear(duration: 0.3)) {
                 backDegree = 90
@@ -46,7 +55,12 @@ struct WordCard: View {
 
 struct WordCard_Previews: PreviewProvider {
     static var previews: some View {
-        WordCard()
+        RotatableWordCardView(
+            frontContent: {
+                NewWordCardFront(viewModel: NewWordCardFrontViewModel.init())
+            }, backContent: {
+                NewWordCardBack()
+            })
             .frame(width: 300.0, height: 300.0)
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WordCardBack : View {
+struct NewWordCardBack: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20.0)
@@ -23,7 +23,7 @@ struct WordCardBack : View {
 
 struct WordCardBack_Previews: PreviewProvider {
     static var previews: some View {
-        WordCardBack()
+        NewWordCardBack()
             .frame(width: 300.0, height: 300.0)
     }
 }
