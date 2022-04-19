@@ -7,18 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0F0414280F410B00074324 /* NewWordCardFrontViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F0413280F410B00074324 /* NewWordCardFrontViewModel.swift */; };
+		CE3841DA2806090A002B7465 /* View + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3841D92806090A002B7465 /* View + Extensions.swift */; };
 		CE38C09027F0509D004B200D /* wordLearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C08F27F0509D004B200D /* wordLearningApp.swift */; };
 		CE38C09227F0509D004B200D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C09127F0509D004B200D /* ContentView.swift */; };
 		CE38C09427F0509E004B200D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09327F0509E004B200D /* Assets.xcassets */; };
 		CE38C09727F0509E004B200D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09627F0509E004B200D /* Preview Assets.xcassets */; };
+		CE38C0A227F0A28C004B200D /* RotatableWordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */; };
+		CE38C0A427F0A331004B200D /* NewWordCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A327F0A331004B200D /* NewWordCardFront.swift */; };
+		CE38C0A627F0A33E004B200D /* NewWordCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */; };
+		CE40F3672804AE2E00326839 /* WordsDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3662804AE2E00326839 /* WordsDashboard.swift */; };
+		CE40F3692804B0CD00326839 /* WordsDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3682804B0CD00326839 /* WordsDashboardViewModel.swift */; };
+		CE7DE46027F85C9300399DB4 /* NewWordCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE45F27F85C9300399DB4 /* NewWordCardViewModel.swift */; };
+		CE7DE46327F85ED300399DB4 /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46227F85ED300399DB4 /* WordCard.swift */; };
+		CE7DE46527F8603600399DB4 /* WordCardTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46427F8603600399DB4 /* WordCardTopic.swift */; };
+		CE7DE46727F8615800399DB4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46627F8615800399DB4 /* Word.swift */; };
+		CE7DE46A27F8680100399DB4 /* WordsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46927F8680100399DB4 /* WordsService.swift */; };
+		CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */; };
+		CEE6836C27F1A083004DE72B /* NewWordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6836B27F1A083004DE72B /* NewWordCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE0F0413280F410B00074324 /* NewWordCardFrontViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardFrontViewModel.swift; sourceTree = "<group>"; };
+		CE3841D92806090A002B7465 /* View + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extensions.swift"; sourceTree = "<group>"; };
 		CE38C08C27F0509D004B200D /* wordLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE38C08F27F0509D004B200D /* wordLearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordLearningApp.swift; sourceTree = "<group>"; };
 		CE38C09127F0509D004B200D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE38C09327F0509E004B200D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE38C09627F0509E004B200D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableWordCardView.swift; sourceTree = "<group>"; };
+		CE38C0A327F0A331004B200D /* NewWordCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardFront.swift; sourceTree = "<group>"; };
+		CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardBack.swift; sourceTree = "<group>"; };
+		CE40F3662804AE2E00326839 /* WordsDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsDashboard.swift; sourceTree = "<group>"; };
+		CE40F3682804B0CD00326839 /* WordsDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsDashboardViewModel.swift; sourceTree = "<group>"; };
+		CE7DE45F27F85C9300399DB4 /* NewWordCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardViewModel.swift; sourceTree = "<group>"; };
+		CE7DE46227F85ED300399DB4 /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
+		CE7DE46427F8603600399DB4 /* WordCardTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardTopic.swift; sourceTree = "<group>"; };
+		CE7DE46627F8615800399DB4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		CE7DE46927F8680100399DB4 /* WordsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsService.swift; sourceTree = "<group>"; };
+		CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulRectangleView.swift; sourceTree = "<group>"; };
+		CEE6836B27F1A083004DE72B /* NewWordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE3841D8280608F6002B7465 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE3841D92806090A002B7465 /* View + Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CE38C08327F0509D004B200D = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +89,12 @@
 			children = (
 				CE38C08F27F0509D004B200D /* wordLearningApp.swift */,
 				CE38C09127F0509D004B200D /* ContentView.swift */,
+				CE40F3652804AE1400326839 /* WordsDashboard */,
+				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
+				CEE3E9AE27F218DC00B5D445 /* WordCard */,
+				CE7DE46827F865E200399DB4 /* Service */,
+				CE7DE46127F85EC200399DB4 /* Model */,
+				CE3841D8280608F6002B7465 /* Utils */,
 				CE38C09327F0509E004B200D /* Assets.xcassets */,
 				CE38C09527F0509E004B200D /* Preview Content */,
 			);
@@ -65,6 +107,54 @@
 				CE38C09627F0509E004B200D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE40F3652804AE1400326839 /* WordsDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				CE40F3662804AE2E00326839 /* WordsDashboard.swift */,
+				CE40F3682804B0CD00326839 /* WordsDashboardViewModel.swift */,
+			);
+			path = WordsDashboard;
+			sourceTree = "<group>";
+		};
+		CE7DE45E27F85C7B00399DB4 /* NewWordCard */ = {
+			isa = PBXGroup;
+			children = (
+				CEE6836B27F1A083004DE72B /* NewWordCard.swift */,
+				CE38C0A327F0A331004B200D /* NewWordCardFront.swift */,
+				CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */,
+				CE7DE45F27F85C9300399DB4 /* NewWordCardViewModel.swift */,
+				CE0F0413280F410B00074324 /* NewWordCardFrontViewModel.swift */,
+			);
+			path = NewWordCard;
+			sourceTree = "<group>";
+		};
+		CE7DE46127F85EC200399DB4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DE46627F8615800399DB4 /* Word.swift */,
+				CE7DE46227F85ED300399DB4 /* WordCard.swift */,
+				CE7DE46427F8603600399DB4 /* WordCardTopic.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE7DE46827F865E200399DB4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DE46927F8680100399DB4 /* WordsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CEE3E9AE27F218DC00B5D445 /* WordCard */ = {
+			isa = PBXGroup;
+			children = (
+				CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */,
+				CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */,
+			);
+			path = WordCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +227,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE38C0A227F0A28C004B200D /* RotatableWordCardView.swift in Sources */,
+				CE7DE46527F8603600399DB4 /* WordCardTopic.swift in Sources */,
+				CE38C0A627F0A33E004B200D /* NewWordCardBack.swift in Sources */,
+				CE38C0A427F0A331004B200D /* NewWordCardFront.swift in Sources */,
+				CE7DE46027F85C9300399DB4 /* NewWordCardViewModel.swift in Sources */,
 				CE38C09227F0509D004B200D /* ContentView.swift in Sources */,
 				CE38C09027F0509D004B200D /* wordLearningApp.swift in Sources */,
+				CE7DE46727F8615800399DB4 /* Word.swift in Sources */,
+				CE40F3672804AE2E00326839 /* WordsDashboard.swift in Sources */,
+				CE7DE46A27F8680100399DB4 /* WordsService.swift in Sources */,
+				CE40F3692804B0CD00326839 /* WordsDashboardViewModel.swift in Sources */,
+				CEE6836C27F1A083004DE72B /* NewWordCard.swift in Sources */,
+				CE3841DA2806090A002B7465 /* View + Extensions.swift in Sources */,
+				CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */,
+				CE7DE46327F85ED300399DB4 /* WordCard.swift in Sources */,
+				CE0F0414280F410B00074324 /* NewWordCardFrontViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
