@@ -29,7 +29,7 @@ struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
                 .rotation3DEffect(Angle(degrees: backDegree), axis: (x: 0, y: 1, z: 0))
         }
         .onTapGesture {
-            flipCard()
+//            flipCard()
         }
     }
     

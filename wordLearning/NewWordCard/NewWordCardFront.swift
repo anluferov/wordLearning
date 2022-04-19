@@ -10,12 +10,7 @@ import SwiftUI
 struct NewWordCardFront: View {
     @ObservedObject private(set) var viewModel: NewWordCardFrontViewModel
     
-    let colors: [Color] = [.white, .orange, .red, .gray, .green, .blue]
-    
-    @State private var activeColorIndex: Int = 0
-    
-    @State private var hintOpacity: Double = 1.0
-    @State private var topActionsBlurRadius: Double = 0.0
+    @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
         ZStack {
@@ -24,12 +19,21 @@ struct NewWordCardFront: View {
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
                 .overlay(colorButton, alignment: .topLeading)
                 .overlay(topHint, alignment: .top)
-                .overlay(contentDetails, alignment: .center)
+                .overlay(toLearnWordTextField, alignment: .center)
 
         }
     }
     
     // Views
+    
+    var toLearnWordTextField: some View {
+        TextField("Enter word to learn", text: $viewModel.toLearnText)
+            .textFieldStyle(.roundedBorder)
+            .font(.title)
+            .focused($textFieldIsFocused)
+            .minimumScaleFactor(0.5)
+            .padding()
+    }
     
     var colorButton: some View {
         Circle()
@@ -51,27 +55,13 @@ struct NewWordCardFront: View {
             .animation(.linear, value: viewModel.hintOpacity)
             .opacity(viewModel.hintOpacity)
     }
-    
-    var contentDetails: some View {
-        Image(systemName: "house.fill")
-            .resizable()
-            .frame(width: 50.0, height: 50.0)
-            .foregroundColor(.red)
-            .padding()
-            .background(.white)
-            .cornerRadius(20)
-    }
-    
-    // Logic
-    
-    var nextColorIndex: Int {
-        (activeColorIndex + 1) % colors.count
-    }
 }
 
 struct WordCardFront_Previews: PreviewProvider {
     static var previews: some View {
-        NewWordCardFront(viewModel: NewWordCardFrontViewModel.init())
-            .frame(width: 300.0, height: 300.0)
+        ZStack {
+            NewWordCardFront(viewModel: NewWordCardFrontViewModel.init())
+                .frame(width: 300.0, height: 300.0)
+        }
     }
 }

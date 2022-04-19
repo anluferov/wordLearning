@@ -49,7 +49,7 @@ struct NewWordCard: View {
                                 }
                                 .onChanged {
                                     let distance = Double(geometryProxy.size.height/2)
-                                    viewModel.dragGestureChanged($0, offset: distance)
+                                    viewModel.dragGestureChanged($0, fullDragDistance: distance)
                                 }
                                 .onEnded { _ in
                                     withAnimation(.spring()) {
