@@ -15,7 +15,7 @@ struct WordsDashboard: View {
     var body: some View {
         VStack {
             Text("Word Cards")
-                .font(.largeTitle)
+                .font(.system(size: 25, weight: .black, design: .rounded))
                 .padding()
             
             // list with created cards
@@ -30,6 +30,7 @@ struct WordsDashboard: View {
                             .padding()
                             .overlay(
                                 Text(topic.rawValue)
+                                    .font(.system(size: 20, weight: .thin, design: .rounded))
                             )
                     }
                 }
@@ -44,6 +45,7 @@ struct WordsDashboard: View {
                 .padding()
                 .overlay(
                     Text("Motivation phrase about learning words")
+                        .font(.system(size: 20, weight: .thin, design: .rounded))
                 )
             
             Spacer()

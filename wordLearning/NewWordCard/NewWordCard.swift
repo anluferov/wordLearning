@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct NewWordCard: View {
-    @ObservedObject private(set) var viewModel: NewWordCardViewModel
-    
-    var namespace: Namespace.ID
+    @EnvironmentObject var viewModel: NewWordCardViewModel
     
     @GestureState private var dragValue: CGSize = .zero
+    var namespace: Namespace.ID
     
     var body: some View {
         ZStack {
@@ -33,8 +32,9 @@ struct NewWordCard: View {
             VStack {
                 HStack() {
                     RotatableWordCardView(
+                        isFlipped: $viewModel.isFlipped,
                         frontContent: {
-                            NewWordCardFront(viewModel: viewModel.frontViewModel)
+                            NewWordCardFront()
                         }, backContent: {
                             NewWordCardBack()
                         })
@@ -49,11 +49,11 @@ struct NewWordCard: View {
                                 }
                                 .onChanged {
                                     let distance = Double(geometryProxy.size.height/2)
-                                    viewModel.dragGestureChanged($0, fullDragDistance: distance)
+                                    viewModel.dragGestureChangedAction($0, fullDragDistance: distance)
                                 }
                                 .onEnded { _ in
                                     withAnimation(.spring()) {
-                                        viewModel.dragGestureEnded()
+                                        viewModel.dragGestureEndedAction()
                                     }
                                 }
                         )
@@ -65,6 +65,7 @@ struct NewWordCard: View {
             .frame(maxHeight: .infinity)
         }
     }
+       
     
     func cardYOffset(_ proxy: GeometryProxy) -> CGFloat {
         switch viewModel.state {
@@ -83,6 +84,7 @@ struct CreationWordCardView_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        NewWordCard(viewModel: NewWordCardViewModel.init(), namespace: namespace)
+        NewWordCard(namespace: namespace)
+            .environmentObject(NewWordCardViewModel.init())
     }
 }

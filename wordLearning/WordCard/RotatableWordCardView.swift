@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
-    @State var backDegree = 0.0
-    @State var frontDegree = -90.0
-    @State var isFlipped = false
+    @State private var backDegree = 0.0
+    @State private var frontDegree = -90.0
+    
+    @Binding var isFlipped: Bool
     
     private let frontContent: () -> FrontContent
     private let backContent: () -> BackContent
     
-    init(@ViewBuilder frontContent: @escaping () -> FrontContent,
+    init(isFlipped: Binding<Bool>,
+         @ViewBuilder frontContent: @escaping () -> FrontContent,
          @ViewBuilder backContent: @escaping () -> BackContent) {
+        self._isFlipped = isFlipped
         self.frontContent = frontContent
         self.backContent = backContent
     }
@@ -28,12 +31,12 @@ struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
             frontContent()
                 .rotation3DEffect(Angle(degrees: backDegree), axis: (x: 0, y: 1, z: 0))
         }
-        .onTapGesture {
-//            flipCard()
+        .onChange(of: isFlipped) { newValue in
+            flipCard()
         }
     }
     
-    func flipCard () {
+    func flipCard() {
         isFlipped.toggle()
         if isFlipped {
             withAnimation(.linear(duration: 0.3)) {
@@ -56,8 +59,9 @@ struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
 struct WordCard_Previews: PreviewProvider {
     static var previews: some View {
         RotatableWordCardView(
+            isFlipped: .constant(false),
             frontContent: {
-                NewWordCardFront(viewModel: NewWordCardFrontViewModel.init())
+                NewWordCardFront()
             }, backContent: {
                 NewWordCardBack()
             })

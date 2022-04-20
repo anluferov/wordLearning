@@ -59,18 +59,12 @@ struct ColorfulShape: Shape {
     }
     
     func path(in rect: CGRect) -> Path {
-        let a: CGFloat = rect.height
-        let b: CGFloat = rect.width
-
-        let c = pow(pow(a, 2) + pow(b, 2), 0.5) // a^2 + b^2 = c^2  --> Solved for 'c'
-        let radius = c * progress
-
         var path = Path()
-        path.addArc(center: CGPoint(x: 35.0, y: 35.0),
-                    radius: radius,
-                    startAngle: Angle(degrees: 0),
-                    endAngle: Angle(degrees: 360),
-                    clockwise: true)
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: rect.width, y: 0))
+        path.addLine(to: CGPoint(x: rect.width, y: rect.height * progress))
+        path.addLine(to: CGPoint(x: 0, y: rect.height * progress))
+        path.closeSubpath()
         return path
     }
 }

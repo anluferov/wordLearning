@@ -10,31 +10,36 @@ import SwiftUI
 
 class NewWordCardFrontViewModel: ObservableObject {
     @Published var hintOpacity: Double
-    @Published var topActionsBlurRadius: Double
-
-    @Published var currentColor: Color
-    @Published var nextColor: Color
+    @Published var topConfigurationBlurRadius: Double
+    
+    @Published var currentLanguage: String
+    @Published var currentTopic: WordCardTopic?
     
     @Published var toLearnText: String
     
-    private let colors: [Color] = [.white, .orange, .red, .gray, .green, .blue]
+    let toLearnTextPlaceholder: String = "Enter word to learn"
+    let topicPlaceholder: String = "Choose topic"
+    
+    let languages: [String] = ["English", "Russian", "Belarusian", "French", "German"]
+    let topics: [WordCardTopic] = WordCardTopic.allCases
+    private let colors: [Color] = [.white, .orange, .red, .green, .blue]
     
     init() {
         _hintOpacity = .init(initialValue: 1.0)
-        _topActionsBlurRadius = .init(initialValue: 20.0)
-        _currentColor = .init(initialValue: colors[0])
-        _nextColor = .init(initialValue: colors[1])
+        _topConfigurationBlurRadius = .init(initialValue: 20.0)
+
+        _currentLanguage = .init(initialValue: languages.first ?? "")
+        _currentTopic = .init(initialValue: nil)
+
+        
         _toLearnText = .init(initialValue: "")
     }
     
-    func selectNextColor() {
-        currentColor = calculateNextColor()
-        nextColor = calculateNextColor()
+    func selectLanguageAction(_ language: String) {
+        currentLanguage = language
     }
     
-    private func calculateNextColor() -> Color {
-        let currentColorIndex = colors.firstIndex(of: currentColor) ?? 0
-        let nextColorIndex = (currentColorIndex + 1) % colors.count
-        return colors[nextColorIndex]
+    func selectTopicAction(_ topic: WordCardTopic) {
+        currentTopic = topic
     }
 }

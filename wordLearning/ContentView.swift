@@ -15,7 +15,7 @@ struct Preview: Identifiable {
 struct ContentView: View {
     @Namespace var newCardNamespace
 
-    @State var dragNewCardsProgress: Double = 0.0
+    @State private var dragNewCardsProgress: Double = 0.0
 
     @State private var backOpacity: Double = 0.0
     @State private var isCardSavingInProgress: Bool = false
@@ -58,7 +58,8 @@ struct ContentView: View {
             WordsDashboard(viewModel: WordsDashboardViewModel.init(), namespace: newCardNamespace)
 
             if !isCardSavingInProgress {
-                NewWordCard(viewModel: NewWordCardViewModel.init(), namespace: newCardNamespace)
+                NewWordCard(namespace: newCardNamespace)
+                    .environmentObject(NewWordCardViewModel.init())
             }
 
 
