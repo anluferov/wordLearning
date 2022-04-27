@@ -31,7 +31,7 @@ struct NewWordCard: View {
         GeometryReader { geometryProxy in
             VStack {
                 HStack() {
-                    RotatableWordCardView(
+                    RotatableView(
                         isFlipped: $viewModel.isFlipped,
                         frontContent: {
                             NewWordCardFront()

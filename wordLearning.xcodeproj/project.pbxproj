@@ -12,7 +12,7 @@
 		CE38C09227F0509D004B200D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C09127F0509D004B200D /* ContentView.swift */; };
 		CE38C09427F0509E004B200D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09327F0509E004B200D /* Assets.xcassets */; };
 		CE38C09727F0509E004B200D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09627F0509E004B200D /* Preview Assets.xcassets */; };
-		CE38C0A227F0A28C004B200D /* RotatableWordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */; };
+		CE38C0A227F0A28C004B200D /* RotatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A127F0A28C004B200D /* RotatableView.swift */; };
 		CE38C0A427F0A331004B200D /* NewWordCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A327F0A331004B200D /* NewWordCardFront.swift */; };
 		CE38C0A627F0A33E004B200D /* NewWordCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */; };
 		CE40F3672804AE2E00326839 /* WordsDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3662804AE2E00326839 /* WordsDashboard.swift */; };
@@ -33,7 +33,7 @@
 		CE38C09127F0509D004B200D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE38C09327F0509E004B200D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE38C09627F0509E004B200D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableWordCardView.swift; sourceTree = "<group>"; };
+		CE38C0A127F0A28C004B200D /* RotatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableView.swift; sourceTree = "<group>"; };
 		CE38C0A327F0A331004B200D /* NewWordCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardFront.swift; sourceTree = "<group>"; };
 		CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardBack.swift; sourceTree = "<group>"; };
 		CE40F3662804AE2E00326839 /* WordsDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsDashboard.swift; sourceTree = "<group>"; };
@@ -89,7 +89,6 @@
 				CE38C09127F0509D004B200D /* ContentView.swift */,
 				CE40F3652804AE1400326839 /* WordsDashboard */,
 				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
-				CEE3E9AE27F218DC00B5D445 /* WordCard */,
 				CE7DE46827F865E200399DB4 /* Service */,
 				CE7DE46127F85EC200399DB4 /* Model */,
 				CE3841D8280608F6002B7465 /* Utils */,
@@ -119,6 +118,7 @@
 		CE7DE45E27F85C7B00399DB4 /* NewWordCard */ = {
 			isa = PBXGroup;
 			children = (
+				CEE3E9AE27F218DC00B5D445 /* Views */,
 				CEE6836B27F1A083004DE72B /* NewWordCard.swift */,
 				CE38C0A327F0A331004B200D /* NewWordCardFront.swift */,
 				CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */,
@@ -145,13 +145,13 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		CEE3E9AE27F218DC00B5D445 /* WordCard */ = {
+		CEE3E9AE27F218DC00B5D445 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */,
+				CE38C0A127F0A28C004B200D /* RotatableView.swift */,
 				CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */,
 			);
-			path = WordCard;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE38C0A227F0A28C004B200D /* RotatableWordCardView.swift in Sources */,
+				CE38C0A227F0A28C004B200D /* RotatableView.swift in Sources */,
 				CE7DE46527F8603600399DB4 /* WordCardTopic.swift in Sources */,
 				CE38C0A627F0A33E004B200D /* NewWordCardBack.swift in Sources */,
 				CE38C0A427F0A331004B200D /* NewWordCardFront.swift in Sources */,

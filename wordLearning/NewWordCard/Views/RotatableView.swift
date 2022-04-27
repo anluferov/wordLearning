@@ -7,9 +7,17 @@
 
 import SwiftUI
 
-struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
-    @State private var frontContentDegree = 0.0
-    @State private var backContentDegree = -90.0
+fileprivate struct Constants {
+    static let frontOnTopFrontContentDegree: Double = 0.0
+    static let frontOnTopBackContentDegree: Double = -90.0
+    static let backOnTopFrontContentDegree: Double = 90.0
+    static let backOnTopBackContentDegree: Double = 0.0
+    static let rotationAnimationDuration: Double = 0.4
+}
+
+struct RotatableView<FrontContent: View, BackContent: View>: View {
+    @State private var frontContentDegree = Constants.frontOnTopFrontContentDegree
+    @State private var backContentDegree = Constants.frontOnTopBackContentDegree
     
     @Binding var isFlipped: Bool
     
@@ -39,27 +47,18 @@ struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
     }
     
     func flipCard() {
-        if isFlipped {
-            withAnimation(.linear(duration: 2.0)) {
-                frontContentDegree = 90
-            }
-            withAnimation(.linear(duration: 2.0).delay(2.0)){
-                backContentDegree = 0
-            }
-        } else {
-            withAnimation(.linear(duration: 2.0)) {
-                backContentDegree = -90
-            }
-            withAnimation(.linear(duration: 2.0).delay(2.0)){
-                frontContentDegree = 0
-            }
+        withAnimation(.linear(duration: Constants.rotationAnimationDuration).delay(isFlipped ? 0.0 : Constants.rotationAnimationDuration)) {
+            frontContentDegree = isFlipped ? Constants.backOnTopFrontContentDegree : Constants.frontOnTopFrontContentDegree
+        }
+        withAnimation(.linear(duration: Constants.rotationAnimationDuration).delay(isFlipped ? Constants.rotationAnimationDuration : 0.0)) {
+            backContentDegree = isFlipped ? Constants.backOnTopBackContentDegree : Constants.frontOnTopBackContentDegree
         }
     }
 }
 
 struct WordCard_Previews: PreviewProvider {
     static var previews: some View {
-        RotatableWordCardView(
+        RotatableView(
             isFlipped: .constant(false),
             frontContent: {
                 NewWordCardFront()
