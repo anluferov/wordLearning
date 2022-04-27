@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
-    @State private var backDegree = 0.0
-    @State private var frontDegree = -90.0
+    @State private var frontContentDegree = 0.0
+    @State private var backContentDegree = -90.0
     
     @Binding var isFlipped: Bool
     
@@ -27,9 +27,11 @@ struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
     var body: some View {
         ZStack {
             backContent()
-                .rotation3DEffect(Angle(degrees: frontDegree), axis: (x: 0, y: 1, z: 0))
+                .rotation3DEffect(Angle(degrees: backContentDegree), axis: (x: 0, y: 1, z: 0))
+                .allowsHitTesting(isFlipped)
             frontContent()
-                .rotation3DEffect(Angle(degrees: backDegree), axis: (x: 0, y: 1, z: 0))
+                .rotation3DEffect(Angle(degrees: frontContentDegree), axis: (x: 0, y: 1, z: 0))
+                .allowsHitTesting(!isFlipped)
         }
         .onChange(of: isFlipped) { newValue in
             flipCard()
@@ -37,20 +39,19 @@ struct RotatableWordCardView<FrontContent: View, BackContent: View>: View {
     }
     
     func flipCard() {
-        isFlipped.toggle()
         if isFlipped {
-            withAnimation(.linear(duration: 0.3)) {
-                backDegree = 90
+            withAnimation(.linear(duration: 2.0)) {
+                frontContentDegree = 90
             }
-            withAnimation(.linear(duration: 0.3).delay(0.3)){
-                frontDegree = 0
+            withAnimation(.linear(duration: 2.0).delay(2.0)){
+                backContentDegree = 0
             }
         } else {
-            withAnimation(.linear(duration: 0.3)) {
-                frontDegree = -90
+            withAnimation(.linear(duration: 2.0)) {
+                backContentDegree = -90
             }
-            withAnimation(.linear(duration: 0.3).delay(0.3)){
-                backDegree = 0
+            withAnimation(.linear(duration: 2.0).delay(2.0)){
+                frontContentDegree = 0
             }
         }
     }

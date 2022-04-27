@@ -63,6 +63,7 @@ struct NewWordCard: View {
                 .frame(maxWidth: .infinity)
             }
             .frame(maxHeight: .infinity)
+            .environmentObject(viewModel)
         }
     }
        

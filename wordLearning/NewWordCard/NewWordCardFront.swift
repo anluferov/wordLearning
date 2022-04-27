@@ -13,15 +13,13 @@ struct NewWordCardFront: View {
     @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
-        ZStack {
-            ColorfulRectangleView(color: viewModel.color)
-                .cornerRadius(20)
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-                .overlay(topConfiguration, alignment: .topLeading)
-                .overlay(topHint, alignment: .top)
-                .overlay(toLearnWordTextField, alignment: .center)
-                .overlay(nextButton, alignment: .bottomTrailing)
-        }
+        ColorfulRectangleView(color: viewModel.currentColor)
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+            .overlay(topConfiguration, alignment: .topLeading)
+            .overlay(topHint, alignment: .top)
+            .overlay(toLearnWordTextField, alignment: .center)
+            .overlay(nextButton, alignment: .bottomTrailing)
     }
     
     var topConfiguration: some View {
@@ -36,12 +34,12 @@ struct NewWordCardFront: View {
         .cornerRadius(10.0)
         .padding()
         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-        .animation(.linear, value: viewModel.frontViewModel.topConfigurationBlurRadius)
-        .blur(radius: viewModel.frontViewModel.topConfigurationBlurRadius)
+        .animation(.linear, value: viewModel.topConfigurationBlurRadius)
+        .blur(radius: viewModel.topConfigurationBlurRadius)
     }
     
     var toLearnWordTextField: some View {
-        TextField(viewModel.frontViewModel.toLearnTextPlaceholder, text: $viewModel.frontViewModel.toLearnText)
+        TextField(viewModel.toLearnTextPlaceholder, text: $viewModel.toLearnText)
             .textFieldStyle(.roundedBorder)
             .font(.system(size: 20, weight: .bold, design: .rounded))
             .focused($textFieldIsFocused)
@@ -70,18 +68,18 @@ struct NewWordCardFront: View {
     
     var colorButton: some View {
         Circle()
-            .foregroundColor(viewModel.nextColor)
+            .foregroundColor(viewModel.nextAvaliableColor)
             .frame(width: 30.0, height: 30.0)
             .onTapGesture {
-                viewModel.selectNextColorAction()
+                viewModel.updateColorToNextAvaliable()
             }
     }
     
     var languageMenu: some View {
-        Menu(viewModel.frontViewModel.currentLanguage) {
-            ForEach(viewModel.frontViewModel.languages, id: \.self) { language in
+        Menu(viewModel.toLearnLanguage) {
+            ForEach(viewModel.languages, id: \.self) { language in
                 Button(language) {
-                    viewModel.frontViewModel.selectLanguageAction(language)
+                    viewModel.updateToLearnLanguageAction(language)
                 }
             }
         }
@@ -89,10 +87,10 @@ struct NewWordCardFront: View {
     }
     
     var topicMenu: some View {
-        Menu(viewModel.frontViewModel.currentTopic?.rawValue ?? viewModel.frontViewModel.topicPlaceholder) {
-            ForEach(viewModel.frontViewModel.topics, id: \.self) { topic in
+        Menu(viewModel.topic?.rawValue ?? viewModel.topicPlaceholder) {
+            ForEach(viewModel.topics, id: \.self) { topic in
                 Button(topic.rawValue) {
-                    viewModel.frontViewModel.selectTopicAction(topic)
+                    viewModel.updateTopicAction(topic)
                 }
             }
         }
@@ -103,8 +101,8 @@ struct NewWordCardFront: View {
         Text("Swipe up to create new card")
             .font(.system(size: 12, weight: .thin, design: .rounded))
             .padding()
-            .animation(.linear, value: viewModel.frontViewModel.hintOpacity)
-            .opacity(viewModel.frontViewModel.hintOpacity)
+            .animation(.linear, value: viewModel.hintOpacity)
+            .opacity(viewModel.hintOpacity)
     }
 }
 

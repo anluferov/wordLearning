@@ -13,21 +13,18 @@ struct NewWordCardBack: View {
     @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundColor(viewModel.color)
-                .cornerRadius(20)
-                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-                .overlay(topConfiguration, alignment: .topLeading)
-                .overlay(nativeWordTextField, alignment: .center)
-                //TODO: actions for buttons below not working, need to fix
-                .overlay(backButton, alignment: .bottomLeading)
-                .overlay(saveButton, alignment: .bottomTrailing)
-        }
+        Rectangle()
+            .foregroundColor(viewModel.currentColor)
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+            .overlay(topConfiguration, alignment: .topLeading)
+            .overlay(nativeWordTextField, alignment: .center)
+            .overlay(backButton, alignment: .bottomLeading)
+            .overlay(saveButton, alignment: .bottomTrailing)
     }
     
     var nativeWordTextField: some View {
-        TextField(viewModel.backViewModel.nativeTextPlaceholder, text: $viewModel.backViewModel.nativeText)
+        TextField(viewModel.nativeTextPlaceholder, text: $viewModel.nativeText)
             .textFieldStyle(.roundedBorder)
             .font(.system(size: 20, weight: .bold, design: .rounded))
             .focused($textFieldIsFocused)
@@ -86,10 +83,10 @@ struct NewWordCardBack: View {
     }
     
     var languageMenu: some View {
-        Menu(viewModel.frontViewModel.currentLanguage) {
-            ForEach(viewModel.frontViewModel.languages, id: \.self) { language in
+        Menu(viewModel.toLearnLanguage) {
+            ForEach(viewModel.languages, id: \.self) { language in
                 Button(language) {
-                    viewModel.frontViewModel.selectLanguageAction(language)
+                    viewModel.updateToLearnLanguageAction(language)
                 }
             }
         }

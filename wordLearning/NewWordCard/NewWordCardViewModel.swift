@@ -18,32 +18,49 @@ class NewWordCardViewModel: ObservableObject {
         case saving
     }
     
-    var frontViewModel: NewWordCardFrontViewModel
-    var backViewModel: NewWordCardBackViewModel
-    
-    @Published var isFlipped: Bool
     @Published var state: State
-    @Published var backgroundOpacity: Double
+    @Published var isFlipped: Bool
     
-    @Published var color: Color
-    @Published var nextColor: Color
-
+    @Published var backgroundOpacity: Double
+    @Published var hintOpacity: Double
+    @Published var topConfigurationBlurRadius: Double
+    
+    @Published var currentColor: Color
+    @Published var nextAvaliableColor: Color
+    @Published var topic: WordCardTopic?
+    @Published var nativeLanguage: String
+    @Published var toLearnLanguage: String
+    @Published var nativeText: String
+    @Published var toLearnText: String
+    
     let cardSide: Double = 300.0
     
+    let nativeTextPlaceholder: String = "Enter word to learn"
+    let toLearnTextPlaceholder: String = "Enter word to learn"
+    let topicPlaceholder: String = "Choose topic"
+    
+    let languages: [String] = ["English", "Russian", "Belarusian", "French", "German"]
+    let topics: [WordCardTopic] = WordCardTopic.allCases
     private let colors: [Color] = [.white, .orange, .red, .green, .blue]
     
     private var dragToCenterProgress: Double = 0.0
     
     init() {
-        frontViewModel = NewWordCardFrontViewModel()
-        backViewModel = NewWordCardBackViewModel()
-        
-        _isFlipped = .init(initialValue: false)
-        _backgroundOpacity = .init(initialValue: 0.0)
         _state = .init(initialValue: .inactive)
+        _isFlipped = .init(initialValue: false)
         
-        _color = .init(initialValue: colors[0])
-        _nextColor = .init(initialValue: colors[1])
+        _backgroundOpacity = .init(initialValue: 0.0)
+        _hintOpacity = .init(initialValue: 1.0)
+        _topConfigurationBlurRadius = .init(initialValue: 20.0)
+        
+        _currentColor = .init(initialValue: colors[0])
+        _nextAvaliableColor = .init(initialValue: colors[1])
+
+        _topic = .init(initialValue: nil)
+        _toLearnLanguage = .init(initialValue: languages.first ?? "")
+        _nativeLanguage = .init(initialValue: languages.first ?? "")
+        _toLearnText = .init(initialValue: "")
+        _nativeText = .init(initialValue: "")
     }
     
     func dragGestureChangedAction(_ dragValue: DragGesture.Value, fullDragDistance: Double) {
@@ -85,9 +102,21 @@ class NewWordCardViewModel: ObservableObject {
         }
     }
     
-    func selectNextColorAction() {
-        color = calculateNextColor()
-        nextColor = calculateNextColor()
+    func updateColorToNextAvaliable() {
+        currentColor = calculateNextColor()
+        nextAvaliableColor = calculateNextColor()
+    }
+    
+    func updateToLearnLanguageAction(_ toLearnLanguage: String) {
+        self.toLearnLanguage = toLearnLanguage
+    }
+    
+    func updateNativeLanguageAction(_ nativeLanguage: String) {
+        self.nativeLanguage = nativeLanguage
+    }
+    
+    func updateTopicAction(_ topic: WordCardTopic) {
+        self.topic = topic
     }
     
     func flipForwardButtonAction() {
@@ -105,13 +134,13 @@ class NewWordCardViewModel: ObservableObject {
     }
     
     private func calculateNextColor() -> Color {
-        let currentColorIndex = colors.firstIndex(of: color) ?? 0
+        let currentColorIndex = colors.firstIndex(of: currentColor) ?? 0
         let nextColorIndex = (currentColorIndex + 1) % colors.count
         return colors[nextColorIndex]
     }
     
     private func updateFrontViewModel() {
-        frontViewModel.hintOpacity = max(0.0, (1.0 - 4 * dragToCenterProgress))
-        frontViewModel.topConfigurationBlurRadius = (20 - 4 * (dragToCenterProgress * 20.0))
+        hintOpacity = max(0.0, (1.0 - 4 * dragToCenterProgress))
+        topConfigurationBlurRadius = (20 - 4 * (dragToCenterProgress * 20.0))
     }
 }
