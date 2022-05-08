@@ -130,7 +130,16 @@ class NewWordCardViewModel: ObservableObject {
     }
     
     func saveButtonAction() {
+        state = .saving
+        resetCardToDefaultData()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.isFlipped = false
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.state = .inactive
+        }
     }
     
     private func calculateNextColor() -> Color {
@@ -142,5 +151,19 @@ class NewWordCardViewModel: ObservableObject {
     private func updateFrontViewModel() {
         hintOpacity = max(0.0, (1.0 - 4 * dragToCenterProgress))
         topConfigurationBlurRadius = (20 - 4 * (dragToCenterProgress * 20.0))
+    }
+    
+    private func resetCardToDefaultData() {
+        backgroundOpacity = 0.0
+        hintOpacity = 1.0
+        topConfigurationBlurRadius = 20.0
+        
+        currentColor = colors[0]
+        nextAvaliableColor = colors[1]
+        topic = nil
+        toLearnLanguage = languages.first ?? ""
+        nativeLanguage = languages.first ?? ""
+        toLearnText = ""
+        nativeText = ""
     }
 }

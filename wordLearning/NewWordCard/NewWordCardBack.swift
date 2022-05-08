@@ -66,7 +66,9 @@ struct NewWordCardBack: View {
     var saveButton: some View {
         Button {
             textFieldIsFocused = false
-            viewModel.saveButtonAction()
+            withAnimation {
+                viewModel.saveButtonAction()
+            }
         } label: {
             Image(systemName: "checkmark")
                 .resizable()

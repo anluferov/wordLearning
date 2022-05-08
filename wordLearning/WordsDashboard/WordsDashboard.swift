@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WordsDashboard: View {
     @ObservedObject private(set) var viewModel: WordsDashboardViewModel
+    @EnvironmentObject private var newCardViewModel: NewWordCardViewModel
     
     var namespace: Namespace.ID
     
@@ -26,6 +27,7 @@ struct WordsDashboard: View {
                             .cornerRadius(20.0)
                             .foregroundColor(.white)
                             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+                            .matchedGeometryEffect(id: newCardViewModel.state == .saving ? topic.rawValue : topic.rawValue + "disabled", in: namespace)
                             .frame(width: 200.0, height: 200.0)
                             .padding()
                             .overlay(

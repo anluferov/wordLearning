@@ -31,34 +31,35 @@ struct NewWordCard: View {
         GeometryReader { geometryProxy in
             VStack {
                 HStack() {
-                    RotatableView(
-                        isFlipped: $viewModel.isFlipped,
-                        frontContent: {
-                            NewWordCardFront()
-                        }, backContent: {
-                            NewWordCardBack()
-                        })
-                        .matchedGeometryEffect(id: "wordCard", in: namespace)
-                        .frame(width: viewModel.cardSide, height: viewModel.cardSide)
-                        .animation(.spring(), value: dragValue)
-                        .offset(dragValue)
-                        .gesture(
-                            DragGesture()
-                                .updating($dragValue) { value, dragValueState, transaction in
-                                    dragValueState.height = value.translation.height
-                                }
-                                .onChanged {
-                                    let distance = Double(geometryProxy.size.height/2)
-                                    viewModel.dragGestureChangedAction($0, fullDragDistance: distance)
-                                }
-                                .onEnded { _ in
-                                    withAnimation(.spring()) {
-                                        viewModel.dragGestureEndedAction()
+                    if viewModel.state != .saving {
+                        RotatableView(
+                            isFlipped: $viewModel.isFlipped,
+                            frontContent: {
+                                NewWordCardFront()
+                            }, backContent: {
+                                NewWordCardBack()
+                            })
+                            .matchedGeometryEffect(id: viewModel.topic?.rawValue ?? "custom", in: namespace, isSource: false)
+                            .frame(width: viewModel.cardSide, height: viewModel.cardSide)
+                            .animation(.spring(), value: dragValue)
+                            .offset(dragValue)
+                            .gesture(
+                                DragGesture()
+                                    .updating($dragValue) { value, dragValueState, transaction in
+                                        dragValueState.height = value.translation.height
                                     }
-                                }
-                        )
-                        .offset(y: cardYOffset(geometryProxy))
-                        
+                                    .onChanged {
+                                        let distance = Double(geometryProxy.size.height/2)
+                                        viewModel.dragGestureChangedAction($0, fullDragDistance: distance)
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation(.spring()) {
+                                            viewModel.dragGestureEndedAction()
+                                        }
+                                    }
+                            )
+                            .offset(y: cardYOffset(geometryProxy))
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }
