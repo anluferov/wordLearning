@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 class NewWordCardViewModel: ObservableObject {
+    @ServiceDependency private(set) var wordCardService: WordCardServiceProtocol
+    
     enum State {
         case inactive
         case dragToActive
@@ -18,50 +20,22 @@ class NewWordCardViewModel: ObservableObject {
         case saving
     }
     
-    @Published var state: State
-    @Published var isFlipped: Bool
+    @Published var state: State = .inactive
+    @Published var isFlipped: Bool = false
     
-    @Published var backgroundOpacity: Double
-    @Published var hintOpacity: Double
-    @Published var topConfigurationBlurRadius: Double
+    //TODO: Add Constants struct
+    @Published var backgroundOpacity: Double = 0.0
+    @Published var hintOpacity: Double = 1.0
+    @Published var topConfigurationBlurRadius: Double = 20.0
     
-    @Published var currentColor: Color
-    @Published var nextAvaliableColor: Color
-    @Published var topic: WordCardTopic?
-    @Published var nativeLanguage: String
-    @Published var toLearnLanguage: String
-    @Published var nativeText: String
-    @Published var toLearnText: String
+    @Published var nextAvaliableColor: Color = WordCardColors[1]
+    @Published var wordCard: WordCard = WordCard()
     
     let cardSide: Double = 300.0
-    
     let nativeTextPlaceholder: String = "Enter word to learn"
     let toLearnTextPlaceholder: String = "Enter word to learn"
-    let topicPlaceholder: String = "Choose topic"
-    
-    let languages: [String] = ["English", "Russian", "Belarusian", "French", "German"]
-    let topics: [WordCardTopic] = WordCardTopic.allCases
-    private let colors: [Color] = [.white, .orange, .red, .green, .blue]
     
     private var dragToCenterProgress: Double = 0.0
-    
-    init() {
-        _state = .init(initialValue: .inactive)
-        _isFlipped = .init(initialValue: false)
-        
-        _backgroundOpacity = .init(initialValue: 0.0)
-        _hintOpacity = .init(initialValue: 1.0)
-        _topConfigurationBlurRadius = .init(initialValue: 20.0)
-        
-        _currentColor = .init(initialValue: colors[0])
-        _nextAvaliableColor = .init(initialValue: colors[1])
-
-        _topic = .init(initialValue: nil)
-        _toLearnLanguage = .init(initialValue: languages.first ?? "")
-        _nativeLanguage = .init(initialValue: languages.first ?? "")
-        _toLearnText = .init(initialValue: "")
-        _nativeText = .init(initialValue: "")
-    }
     
     func dragGestureChangedAction(_ dragValue: DragGesture.Value, fullDragDistance: Double) {
         guard state != .activeBack else {
@@ -103,20 +77,20 @@ class NewWordCardViewModel: ObservableObject {
     }
     
     func updateColorToNextAvaliable() {
-        currentColor = calculateNextColor()
+        wordCard.color = calculateNextColor()
         nextAvaliableColor = calculateNextColor()
     }
     
     func updateToLearnLanguageAction(_ toLearnLanguage: String) {
-        self.toLearnLanguage = toLearnLanguage
+        wordCard.toLearnWord.languageCode = toLearnLanguage
     }
     
     func updateNativeLanguageAction(_ nativeLanguage: String) {
-        self.nativeLanguage = nativeLanguage
+        wordCard.nativeWord.languageCode = nativeLanguage
     }
     
     func updateTopicAction(_ topic: WordCardTopic) {
-        self.topic = topic
+        wordCard.topic = topic
     }
     
     func flipForwardButtonAction() {
@@ -133,6 +107,8 @@ class NewWordCardViewModel: ObservableObject {
         state = .saving
         resetCardToDefaultData()
         
+        wordCardService.create(wordCard)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.isFlipped = false
         }
@@ -143,9 +119,9 @@ class NewWordCardViewModel: ObservableObject {
     }
     
     private func calculateNextColor() -> Color {
-        let currentColorIndex = colors.firstIndex(of: currentColor) ?? 0
-        let nextColorIndex = (currentColorIndex + 1) % colors.count
-        return colors[nextColorIndex]
+        let currentColorIndex = WordCardColors.firstIndex(of: wordCard.color) ?? 0
+        let nextColorIndex = (currentColorIndex + 1) % WordCardColors.count
+        return WordCardColors[nextColorIndex]
     }
     
     private func updateFrontViewModel() {
@@ -158,12 +134,7 @@ class NewWordCardViewModel: ObservableObject {
         hintOpacity = 1.0
         topConfigurationBlurRadius = 20.0
         
-        currentColor = colors[0]
-        nextAvaliableColor = colors[1]
-        topic = nil
-        toLearnLanguage = languages.first ?? ""
-        nativeLanguage = languages.first ?? ""
-        toLearnText = ""
-        nativeText = ""
+        wordCard.toLearnWord.text = ""
+        wordCard.nativeWord.text = ""
     }
 }

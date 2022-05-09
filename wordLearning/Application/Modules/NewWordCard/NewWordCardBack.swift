@@ -14,7 +14,7 @@ struct NewWordCardBack: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(viewModel.currentColor)
+            .foregroundColor(viewModel.wordCard.color)
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
             .overlay(topConfiguration, alignment: .topLeading)
@@ -24,7 +24,7 @@ struct NewWordCardBack: View {
     }
     
     var nativeWordTextField: some View {
-        TextField(viewModel.nativeTextPlaceholder, text: $viewModel.nativeText)
+        TextField(viewModel.nativeTextPlaceholder, text: $viewModel.wordCard.nativeWord.text)
             .textFieldStyle(.roundedBorder)
             .font(.system(size: 20, weight: .bold, design: .rounded))
             .focused($textFieldIsFocused)
@@ -85,8 +85,8 @@ struct NewWordCardBack: View {
     }
     
     var languageMenu: some View {
-        Menu(viewModel.toLearnLanguage) {
-            ForEach(viewModel.languages, id: \.self) { language in
+        Menu(viewModel.wordCard.toLearnWord.languageCode) {
+            ForEach(WordCardLanguageCodes, id: \.self) { language in
                 Button(language) {
                     viewModel.updateToLearnLanguageAction(language)
                 }

@@ -7,14 +7,12 @@
 
 import Foundation
 
-struct Word {
-    let id: String
-    let text: String
-    let languageCode: String
+struct Word: Identifiable {
+    var id: UUID = UUID()
+    var text: String = ""
+    var languageCode: String
     
-    init(text: String, languageCode: String) {
-        self.id = UUID().uuidString
-        self.text = text
+    init(languageCode: String) {
         self.languageCode = languageCode
     }
 }

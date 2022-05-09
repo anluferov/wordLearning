@@ -39,7 +39,7 @@ struct NewWordCard: View {
                             }, backContent: {
                                 NewWordCardBack()
                             })
-                            .matchedGeometryEffect(id: viewModel.topic?.rawValue ?? "custom", in: namespace, isSource: false)
+                            .matchedGeometryEffect(id: viewModel.wordCard.topic.rawValue, in: namespace, isSource: false)
                             .frame(width: viewModel.cardSide, height: viewModel.cardSide)
                             .animation(.spring(), value: dragValue)
                             .offset(dragValue)

@@ -13,7 +13,7 @@ struct NewWordCardFront: View {
     @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
-        ColorfulRectangleView(color: viewModel.currentColor)
+        ColorfulRectangleView(color: viewModel.wordCard.color)
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
             .overlay(topConfiguration, alignment: .topLeading)
@@ -39,7 +39,7 @@ struct NewWordCardFront: View {
     }
     
     var toLearnWordTextField: some View {
-        TextField(viewModel.toLearnTextPlaceholder, text: $viewModel.toLearnText)
+        TextField(viewModel.toLearnTextPlaceholder, text: $viewModel.wordCard.toLearnWord.text)
             .textFieldStyle(.roundedBorder)
             .font(.system(size: 20, weight: .bold, design: .rounded))
             .focused($textFieldIsFocused)
@@ -76,8 +76,8 @@ struct NewWordCardFront: View {
     }
     
     var languageMenu: some View {
-        Menu(viewModel.toLearnLanguage) {
-            ForEach(viewModel.languages, id: \.self) { language in
+        Menu(viewModel.wordCard.toLearnWord.languageCode) {
+            ForEach(WordCardLanguageCodes, id: \.self) { language in
                 Button(language) {
                     viewModel.updateToLearnLanguageAction(language)
                 }
@@ -87,8 +87,8 @@ struct NewWordCardFront: View {
     }
     
     var topicMenu: some View {
-        Menu(viewModel.topic?.rawValue ?? viewModel.topicPlaceholder) {
-            ForEach(viewModel.topics, id: \.self) { topic in
+        Menu(viewModel.wordCard.topic.rawValue) {
+            ForEach(WordCardTopic.allCases, id: \.self) { topic in
                 Button(topic.rawValue) {
                     viewModel.updateTopicAction(topic)
                 }

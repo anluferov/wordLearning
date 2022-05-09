@@ -8,8 +8,10 @@
 import Foundation
 
 protocol WordCardServiceProtocol {
+    var allWordsPublisher: Published<[WordCard]>.Publisher { get }
+    
     func create(_ word: WordCard)
     func update(_ word: WordCard)
     func delete(_ word: WordCard)
-    func fetch() -> [WordCard]
+    func fetch()
 }

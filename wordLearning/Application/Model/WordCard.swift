@@ -8,18 +8,18 @@
 import Foundation
 import SwiftUI
 
-struct WordCard {
-    let id: String
-    let nativeWord: Word
-    let toLearnWord: Word
-    let color: Color
-    let topic: WordCardTopic
+//TODO: rewrite in more beauty way
+let WordCardColors: [Color] = [.white, .orange, .red, .green, .blue]
+let WordCardLanguageCodes: [String] = ["eng", "rus", "blr", "fr", "ger"]
+
+struct WordCard: Equatable, Identifiable {
+    var id = UUID()
+    var nativeWord: Word = Word(languageCode: "rus")
+    var toLearnWord: Word = Word(languageCode: "eng")
+    var topic: WordCardTopic = WordCardTopic.home
+    var color: Color = WordCardColors[0]
     
-    init() {
-        self.id = UUID().uuidString
-        self.nativeWord = Word(text: "Слово \(id)", languageCode: "rus")
-        self.toLearnWord = Word(text: "Word \(id)", languageCode: "eng")
-        self.color = [Color.white, Color.orange, Color.red, Color.gray, Color.green, Color.blue].randomElement()!
-        self.topic = WordCardTopic.allCases.randomElement()!
+    static func == (lhs: WordCard, rhs: WordCard) -> Bool {
+        lhs.id == rhs.id
     }
 }

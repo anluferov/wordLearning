@@ -11,10 +11,11 @@ import SwiftUI
 
 //TODO: Debug implementation of service. Need to rewrite to CoreData or other
 class WordCardService: WordCardServiceProtocol {
-    private var allWords: [WordCard] = [WordCard(), WordCard(), WordCard(), WordCard(), WordCard(), WordCard()]
+    var allWordsPublisher: Published<[WordCard]>.Publisher { $allWords }
+    @Published private var allWords: [WordCard] = []
     
     func create(_ word: WordCard) {
-        allWords.append(word)
+        allWords.insert(word, at: 0)
     }
     
     func update(_ word: WordCard) {
@@ -33,7 +34,7 @@ class WordCardService: WordCardServiceProtocol {
         allWords.remove(at: deletedWordIndex)
     }
     
-    func fetch() -> [WordCard] {
-        allWords
+    func fetch() {
+        allWords = [WordCard()]
     }
 }

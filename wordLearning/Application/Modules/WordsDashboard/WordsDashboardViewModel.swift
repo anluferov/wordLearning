@@ -8,16 +8,17 @@
 import Foundation
 
 class WordsDashboardViewModel: ObservableObject {
-    
-    @Published var dataSource: [WordCardTopic]
-    
     @ServiceDependency private(set) var wordCardService: WordCardServiceProtocol
     
+    @Published var dataSource: [WordCardTopic] = []
+    
     init() {
-        _dataSource = .init(initialValue: [])
+        wordCardService.allWordsPublisher
+            .map { $0.map { word in word.topic }.duplicateRemoved() }
+            .assign(to: &$dataSource)
     }
     
     func loadAvaliableTopics() {
-        dataSource = Array(Set(wordCardService.fetch().map { $0.topic }))
+        wordCardService.fetch()
     }
 }

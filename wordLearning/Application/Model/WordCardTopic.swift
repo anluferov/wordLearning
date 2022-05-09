@@ -12,4 +12,5 @@ enum WordCardTopic: String, CaseIterable {
     case hospital
     case travel
     case shop
+    case custom
 }
