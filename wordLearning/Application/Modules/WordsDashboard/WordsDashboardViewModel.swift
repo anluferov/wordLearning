@@ -11,13 +11,13 @@ class WordsDashboardViewModel: ObservableObject {
     
     @Published var dataSource: [WordCardTopic]
     
-    private let wordsService: WordsServiceProtocol = WordsService()
+    @ServiceDependency private(set) var wordCardService: WordCardServiceProtocol
     
     init() {
         _dataSource = .init(initialValue: [])
     }
     
     func loadAvaliableTopics() {
-        dataSource = Array(Set(wordsService.fetch().map { $0.topic }))
+        dataSource = Array(Set(wordCardService.fetch().map { $0.topic }))
     }
 }

@@ -9,15 +9,8 @@ import Combine
 import Foundation
 import SwiftUI
 
-protocol WordsServiceProtocol {
-    func create(_ word: WordCard)
-    func update(_ word: WordCard)
-    func delete(_ word: WordCard)
-    func fetch() -> [WordCard]
-}
-
 //TODO: Debug implementation of service. Need to rewrite to CoreData or other
-class WordsService: WordsServiceProtocol {
+class WordCardService: WordCardServiceProtocol {
     private var allWords: [WordCard] = [WordCard(), WordCard(), WordCard(), WordCard(), WordCard(), WordCard()]
     
     func create(_ word: WordCard) {
