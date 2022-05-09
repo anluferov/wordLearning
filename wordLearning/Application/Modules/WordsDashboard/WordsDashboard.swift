@@ -22,17 +22,26 @@ struct WordsDashboard: View {
             // list with created cards
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 5.0) {
-                    ForEach(viewModel.dataSource, id: \.self) { topic in
+                    ForEach(viewModel.dataSource, id: \.self) { wordsStack in
                         Rectangle()
                             .cornerRadius(20.0)
-                            .foregroundColor(.white)
+                            .foregroundColor(wordsStack.color)
                             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-                            .matchedGeometryEffect(id: newCardViewModel.state == .saving ? topic.rawValue : topic.rawValue + "disabled", in: namespace)
+                            .matchedGeometryEffect(id: newCardViewModel.state == .saving ? wordsStack.description : wordsStack.description + "disabled",
+                                                   in: namespace)
                             .frame(width: 200.0, height: 200.0)
                             .padding()
                             .overlay(
-                                Text(topic.rawValue)
+                                Text(wordsStack.description)
                                     .font(.system(size: 20, weight: .thin, design: .rounded))
+                            )
+                            .background(
+                                Rectangle()
+                                    .cornerRadius(18.0)
+                                    .foregroundColor(wordsStack.isStack ? wordsStack.color : .clear)
+                                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+                                    .frame(width: 180.0, height: 200.0)
+                                    .offset(x: 0.0, y: -10.0)
                             )
                     }
                 }
