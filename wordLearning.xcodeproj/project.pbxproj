@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE3841DA2806090A002B7465 /* View + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3841D92806090A002B7465 /* View + Extensions.swift */; };
+		CE3841DA2806090A002B7465 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3841D92806090A002B7465 /* View+Extensions.swift */; };
 		CE38C09027F0509D004B200D /* wordLearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C08F27F0509D004B200D /* wordLearningApp.swift */; };
 		CE38C09227F0509D004B200D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C09127F0509D004B200D /* ContentView.swift */; };
 		CE38C09427F0509E004B200D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09327F0509E004B200D /* Assets.xcassets */; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE3841D92806090A002B7465 /* View + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extensions.swift"; sourceTree = "<group>"; };
+		CE3841D92806090A002B7465 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		CE38C08C27F0509D004B200D /* wordLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE38C08F27F0509D004B200D /* wordLearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordLearningApp.swift; sourceTree = "<group>"; };
 		CE38C09127F0509D004B200D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,14 +58,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE3841D8280608F6002B7465 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				CE3841D92806090A002B7465 /* View + Extensions.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		CE38C08327F0509D004B200D = {
 			isa = PBXGroup;
 			children = (
@@ -85,15 +77,9 @@
 		CE38C08E27F0509D004B200D /* wordLearning */ = {
 			isa = PBXGroup;
 			children = (
-				CE38C08F27F0509D004B200D /* wordLearningApp.swift */,
-				CE38C09127F0509D004B200D /* ContentView.swift */,
-				CE40F3652804AE1400326839 /* WordsDashboard */,
-				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
-				CE7DE46827F865E200399DB4 /* Service */,
-				CE7DE46127F85EC200399DB4 /* Model */,
-				CE3841D8280608F6002B7465 /* Utils */,
-				CE38C09327F0509E004B200D /* Assets.xcassets */,
-				CE38C09527F0509E004B200D /* Preview Content */,
+				CE6C50A12829454600AA26C2 /* Application */,
+				CE6C50A22829454F00AA26C2 /* Library */,
+				CE6C50A32829456200AA26C2 /* Resources */,
 			);
 			path = wordLearning;
 			sourceTree = "<group>";
@@ -113,6 +99,60 @@
 				CE40F3682804B0CD00326839 /* WordsDashboardViewModel.swift */,
 			);
 			path = WordsDashboard;
+			sourceTree = "<group>";
+		};
+		CE6C50A12829454600AA26C2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50A42829457000AA26C2 /* Modules */,
+				CE6C50A52829457700AA26C2 /* Services */,
+				CE7DE46127F85EC200399DB4 /* Model */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CE6C50A22829454F00AA26C2 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50A6282945B400AA26C2 /* SwiftUI */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		CE6C50A32829456200AA26C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE38C09527F0509E004B200D /* Preview Content */,
+				CE38C09327F0509E004B200D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE6C50A42829457000AA26C2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE38C08F27F0509D004B200D /* wordLearningApp.swift */,
+				CE38C09127F0509D004B200D /* ContentView.swift */,
+				CE40F3652804AE1400326839 /* WordsDashboard */,
+				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CE6C50A52829457700AA26C2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DE46927F8680100399DB4 /* WordsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE6C50A6282945B400AA26C2 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				CE3841D92806090A002B7465 /* View+Extensions.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		CE7DE45E27F85C7B00399DB4 /* NewWordCard */ = {
@@ -135,14 +175,6 @@
 				CE7DE46427F8603600399DB4 /* WordCardTopic.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		CE7DE46827F865E200399DB4 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				CE7DE46927F8680100399DB4 /* WordsService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		CEE3E9AE27F218DC00B5D445 /* Views */ = {
@@ -236,7 +268,7 @@
 				CE7DE46A27F8680100399DB4 /* WordsService.swift in Sources */,
 				CE40F3692804B0CD00326839 /* WordsDashboardViewModel.swift in Sources */,
 				CEE6836C27F1A083004DE72B /* NewWordCard.swift in Sources */,
-				CE3841DA2806090A002B7465 /* View + Extensions.swift in Sources */,
+				CE3841DA2806090A002B7465 /* View+Extensions.swift in Sources */,
 				CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */,
 				CE7DE46327F85ED300399DB4 /* WordCard.swift in Sources */,
 			);
@@ -368,7 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Resources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -396,7 +428,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Resources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
