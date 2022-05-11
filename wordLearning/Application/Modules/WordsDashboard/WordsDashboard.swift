@@ -19,30 +19,43 @@ struct WordsDashboard: View {
                 .font(.system(size: 25, weight: .black, design: .rounded))
                 .padding()
             
-            // list with created cards
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 5.0) {
-                    ForEach(viewModel.dataSource, id: \.self) { wordsStack in
-                        Rectangle()
-                            .cornerRadius(20.0)
-                            .foregroundColor(wordsStack.color)
-                            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-                            .matchedGeometryEffect(id: newCardViewModel.state == .saving ? wordsStack.description : wordsStack.description + "disabled",
-                                                   in: namespace)
-                            .frame(width: 200.0, height: 200.0)
-                            .padding()
-                            .overlay(
-                                Text(wordsStack.description)
-                                    .font(.system(size: 20, weight: .thin, design: .rounded))
-                            )
-                            .background(
-                                Rectangle()
-                                    .cornerRadius(18.0)
-                                    .foregroundColor(wordsStack.isStack ? wordsStack.color : .clear)
-                                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-                                    .frame(width: 180.0, height: 200.0)
-                                    .offset(x: 0.0, y: -10.0)
-                            )
+            if viewModel.needToShowDashboardPlaceholder {
+                Rectangle()
+                    .cornerRadius(20.0)
+                    .foregroundColor(.white)
+                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+                    .frame(height: 200.0)
+                    .padding()
+                    .overlay(
+                        Text("Your cards collection be shown here after adding first word card.")
+                            .multilineTextAlignment(.center)
+                            .font(.system(size: 20, weight: .thin, design: .rounded))
+                    )
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 5.0) {
+                        ForEach(viewModel.dataSource, id: \.self) { wordsStack in
+                            Rectangle()
+                                .cornerRadius(20.0)
+                                .foregroundColor(wordsStack.color)
+                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+                                .matchedGeometryEffect(id: newCardViewModel.state == .saving ? wordsStack.description : wordsStack.description + "disabled",
+                                                       in: namespace)
+                                .frame(width: 200.0, height: 200.0)
+                                .padding()
+                                .overlay(
+                                    Text(wordsStack.description)
+                                        .font(.system(size: 20, weight: .thin, design: .rounded))
+                                )
+                                .background(
+                                    Rectangle()
+                                        .cornerRadius(18.0)
+                                        .foregroundColor(wordsStack.isStack ? wordsStack.color : .clear)
+                                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+                                        .frame(width: 180.0, height: 200.0)
+                                        .offset(x: 0.0, y: -10.0)
+                                )
+                        }
                     }
                 }
             }
@@ -56,6 +69,7 @@ struct WordsDashboard: View {
                 .padding()
                 .overlay(
                     Text("Motivation phrase about learning words")
+                        .multilineTextAlignment(.center)
                         .font(.system(size: 20, weight: .thin, design: .rounded))
                 )
             

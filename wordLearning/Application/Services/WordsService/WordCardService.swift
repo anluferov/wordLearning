@@ -11,30 +11,30 @@ import SwiftUI
 
 //TODO: Debug implementation of service. Need to rewrite to CoreData or other
 class WordCardService: WordCardServiceProtocol {
-    var allWordsPublisher: Published<[WordCard]>.Publisher { $allWords }
-    @Published private var allWords: [WordCard] = []
+    var allWordsPublisher: AnyPublisher<[WordCard], Never> { allWords.eraseToAnyPublisher() }
+    private let allWords = CurrentValueSubject<[WordCard], Never>([])
     
     func create(_ word: WordCard) {
-        allWords.insert(word, at: 0)
+        allWords.value.insert(word, at: 0)
     }
     
     func update(_ word: WordCard) {
-        guard let updatedWordIndex = allWords.firstIndex(where: { $0.id == word.id }) else {
+        guard let updatedWordIndex = allWords.value.firstIndex(where: { $0.id == word.id }) else {
             return
         }
         
-        allWords[updatedWordIndex] = word
+        allWords.value[updatedWordIndex] = word
     }
     
     func delete(_ word: WordCard) {
-        guard let deletedWordIndex = allWords.firstIndex(where: { $0.id == word.id }) else {
+        guard let deletedWordIndex = allWords.value.firstIndex(where: { $0.id == word.id }) else {
             return
         }
         
-        allWords.remove(at: deletedWordIndex)
+        allWords.value.remove(at: deletedWordIndex)
     }
     
     func fetch() {
-        allWords = [WordCard()]
+        allWords.value = []
     }
 }

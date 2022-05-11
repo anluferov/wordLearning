@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 protocol WordCardServiceProtocol {
-    var allWordsPublisher: Published<[WordCard]>.Publisher { get }
+    var allWordsPublisher: AnyPublisher<[WordCard], Never> { get }
     
     func create(_ word: WordCard)
     func update(_ word: WordCard)
