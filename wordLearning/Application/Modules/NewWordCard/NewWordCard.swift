@@ -38,27 +38,28 @@ struct NewWordCard: View {
                                 NewWordCardFront()
                             }, backContent: {
                                 NewWordCardBack()
-                            })
-                            .matchedGeometryEffect(id: viewModel.wordCard.topic.rawValue, in: namespace, isSource: false)
-                            .frame(width: viewModel.cardSide, height: viewModel.cardSide)
-                            .animation(.spring(), value: dragValue)
-                            .offset(dragValue)
-                            .gesture(
-                                DragGesture()
-                                    .updating($dragValue) { value, dragValueState, transaction in
-                                        dragValueState.height = value.translation.height
+                            }
+                        )
+                        .matchedGeometryEffect(id: viewModel.wordCard.topic.rawValue, in: namespace, isSource: false)
+                        .frame(width: viewModel.cardSide, height: viewModel.cardSide)
+                        .animation(.spring(), value: dragValue)
+                        .offset(dragValue)
+                        .gesture(
+                            DragGesture()
+                                .updating($dragValue) { value, dragValueState, transaction in
+                                    dragValueState.height = value.translation.height
+                                }
+                                .onChanged {
+                                    let distance = Double(geometryProxy.size.height/2)
+                                    viewModel.dragGestureChangedAction($0, fullDragDistance: distance)
+                                }
+                                .onEnded { _ in
+                                    withAnimation(.spring()) {
+                                        viewModel.dragGestureEndedAction()
                                     }
-                                    .onChanged {
-                                        let distance = Double(geometryProxy.size.height/2)
-                                        viewModel.dragGestureChangedAction($0, fullDragDistance: distance)
-                                    }
-                                    .onEnded { _ in
-                                        withAnimation(.spring()) {
-                                            viewModel.dragGestureEndedAction()
-                                        }
-                                    }
-                            )
-                            .offset(y: cardYOffset(geometryProxy))
+                                }
+                        )
+                        .offset(y: cardYOffset(geometryProxy))
                     }
                 }
                 .frame(maxWidth: .infinity)

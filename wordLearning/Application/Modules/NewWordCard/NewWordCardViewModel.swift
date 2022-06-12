@@ -5,11 +5,12 @@
 //  Created by Andrey Luferau on 4/2/22.
 //
 
-import Foundation
 import SwiftUI
+import Combine
 
 class NewWordCardViewModel: ObservableObject {
     @ServiceDependency private(set) var wordCardService: WordCardServiceProtocol
+    @ServiceDependency private(set) var userService: UserServiceProtocol
     
     enum State {
         case inactive
@@ -33,9 +34,22 @@ class NewWordCardViewModel: ObservableObject {
     
     let cardSide: Double = 300.0
     let nativeTextPlaceholder: String = "Enter word to learn"
-    let toLearnTextPlaceholder: String = "Enter word to learn"
+    let toLearnTextPlaceholder: String = "Enter native word"
     
     private var dragToCenterProgress: Double = 0.0
+    
+    private var cancelable: [AnyCancellable] = []
+    
+    init() {
+        userService.currentNativeLanguage
+            .combineLatest(userService.currentToLearnLanguage) { (native, toLearn) in
+                return (native, toLearn)
+            }
+            .sink { (native, toLearn) in
+                self.wordCard = WordCard(nativeWord: Word(languageCode: native), toLearnWord: Word(languageCode: toLearn))
+            }
+            .store(in: &cancelable)
+    }
     
     func dragGestureChangedAction(_ dragValue: DragGesture.Value, fullDragDistance: Double) {
         guard state != .activeBack else {
@@ -76,18 +90,10 @@ class NewWordCardViewModel: ObservableObject {
         }
     }
     
-    func updateColorToNextAvaliable() {
-        wordCard.color = calculateNextColor()
-        nextAvaliableColor = calculateNextColor()
-    }
-    
-    func updateToLearnLanguageAction(_ toLearnLanguage: String) {
-        wordCard.toLearnWord.languageCode = toLearnLanguage
-    }
-    
-    func updateNativeLanguageAction(_ nativeLanguage: String) {
-        wordCard.nativeWord.languageCode = nativeLanguage
-    }
+//    func updateColorToNextAvaliable() {
+//        wordCard.color = calculateNextColor()
+//        nextAvaliableColor = calculateNextColor()
+//    }
     
     func updateTopicAction(_ topic: WordCardTopic) {
         wordCard.topic = topic
@@ -105,24 +111,32 @@ class NewWordCardViewModel: ObservableObject {
     
     func saveButtonAction() {
         state = .saving
-        resetCardToDefaultData()
         
         wordCardService.create(wordCard)
+
+//        resetCardToDefaultData()
+        
+        backgroundOpacity = 0.0
+        hintOpacity = 1.0
+        topConfigurationBlurRadius = 20.0
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.isFlipped = false
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.wordCard.toLearnWord.text = ""
+            self?.wordCard.nativeWord.text = ""
+            
             self?.state = .inactive
         }
     }
     
-    private func calculateNextColor() -> Color {
-        let currentColorIndex = WordCardColors.firstIndex(of: wordCard.color) ?? 0
-        let nextColorIndex = (currentColorIndex + 1) % WordCardColors.count
-        return WordCardColors[nextColorIndex]
-    }
+//    private func calculateNextColor() -> Color {
+//        let currentColorIndex = WordCardColors.firstIndex(of: wordCard.color) ?? 0
+//        let nextColorIndex = (currentColorIndex + 1) % WordCardColors.count
+//        return WordCardColors[nextColorIndex]
+//    }
     
     private func updateFrontViewModel() {
         hintOpacity = max(0.0, (1.0 - 4 * dragToCenterProgress))

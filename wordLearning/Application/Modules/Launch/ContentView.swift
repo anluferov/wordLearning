@@ -13,14 +13,31 @@ struct Preview: Identifiable {
 }
 
 struct ContentView: View {
-    @Namespace var newCardNamespace
+    @Namespace var cardCreationNamespace
+    @Namespace var taskСardNamespace
 
     var body: some View {
         ZStack {
-            WordsDashboard(viewModel: WordsDashboardViewModel.init(), namespace: newCardNamespace)
-            NewWordCard(namespace: newCardNamespace)
+            //-------------------------------------------------------
+            // Main View: Dashboard with list of cards (zIndex = 1)
+            //-------------------------------------------------------
+            WordsDashboard(viewModel: WordsDashboardViewModel.init(), cardTaskNamespace: taskСardNamespace, cardCreationNamespace: cardCreationNamespace)
+                .zIndex(1)
+            
+            //-------------------------------------------------------
+            // Modal View: swappable new card (creation new card flow) (zIndex = 2)
+            //-------------------------------------------------------
+            NewWordCard(namespace: cardCreationNamespace)
+                .zIndex(2)
+            
+            //-------------------------------------------------------
+            // Modal View: container for task with word cards (zIndex = 3)
+            //-------------------------------------------------------
+            WordCardTaskContainer(namespace: taskСardNamespace)
+                .zIndex(3)
         }
-        .environmentObject(NewWordCardViewModel.init())
+        .environmentObject(NewWordCardViewModel())
+        .environmentObject(WordCardTaskContainerViewModel())
     }
 }
 

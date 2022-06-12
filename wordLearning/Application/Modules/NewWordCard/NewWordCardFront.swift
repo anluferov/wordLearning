@@ -13,7 +13,8 @@ struct NewWordCardFront: View {
     @FocusState private var textFieldIsFocused: Bool
     
     var body: some View {
-        ColorfulRectangleView(color: viewModel.wordCard.color)
+        Rectangle()
+            .foregroundColor(.white)
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
             .overlay(topConfiguration, alignment: .topLeading)
@@ -24,10 +25,8 @@ struct NewWordCardFront: View {
     
     var topConfiguration: some View {
         HStack {
-            languageMenu
             topicMenu
             Spacer()
-            colorButton
         }
         .padding()
         .background(Color.gray.opacity(0.2))
@@ -64,26 +63,6 @@ struct NewWordCardFront: View {
                 )
         }
         .padding()
-    }
-    
-    var colorButton: some View {
-        Circle()
-            .foregroundColor(viewModel.nextAvaliableColor)
-            .frame(width: 30.0, height: 30.0)
-            .onTapGesture {
-                viewModel.updateColorToNextAvaliable()
-            }
-    }
-    
-    var languageMenu: some View {
-        Menu(viewModel.wordCard.toLearnWord.languageCode) {
-            ForEach(WordCardLanguageCodes, id: \.self) { language in
-                Button(language) {
-                    viewModel.updateToLearnLanguageAction(language)
-                }
-            }
-        }
-        .menuStyle(CustomConfigurationMenuStyle())
     }
     
     var topicMenu: some View {

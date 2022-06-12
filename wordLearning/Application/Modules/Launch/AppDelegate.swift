@@ -12,6 +12,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         ServiceContainer.register(WordCardService() as WordCardServiceProtocol)
+        ServiceContainer.register(UserService() as UserServiceProtocol)
         
         return true
     }

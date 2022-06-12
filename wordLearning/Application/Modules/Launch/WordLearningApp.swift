@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct wordLearningApp: App {
+struct WordLearningApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {

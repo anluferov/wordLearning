@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol WordCardServiceProtocol {
-    var allWordsPublisher: AnyPublisher<[WordCard], Never> { get }
+    var allWords: AnyPublisher<[WordCard], Never> { get }
     
     func create(_ word: WordCard)
     func update(_ word: WordCard)

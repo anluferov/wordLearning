@@ -14,10 +14,9 @@ struct NewWordCardBack: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(viewModel.wordCard.color)
+            .foregroundColor(.white)
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-            .overlay(topConfiguration, alignment: .topLeading)
             .overlay(nativeWordTextField, alignment: .center)
             .overlay(backButton, alignment: .bottomLeading)
             .overlay(saveButton, alignment: .bottomTrailing)
@@ -30,18 +29,6 @@ struct NewWordCardBack: View {
             .focused($textFieldIsFocused)
             .minimumScaleFactor(0.5)
             .padding()
-    }
-    
-    var topConfiguration: some View {
-        HStack {
-            languageMenu
-            Spacer()
-        }
-        .padding()
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(10.0)
-        .padding()
-        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
     }
     
     var backButton: some View {
@@ -82,17 +69,6 @@ struct NewWordCardBack: View {
                 )
         }
         .padding()
-    }
-    
-    var languageMenu: some View {
-        Menu(viewModel.wordCard.toLearnWord.languageCode) {
-            ForEach(WordCardLanguageCodes, id: \.self) { language in
-                Button(language) {
-                    viewModel.updateToLearnLanguageAction(language)
-                }
-            }
-        }
-        .menuStyle(CustomConfigurationMenuStyle())
     }
 }
 

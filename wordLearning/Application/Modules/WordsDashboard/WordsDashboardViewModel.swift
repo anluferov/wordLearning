@@ -7,33 +7,27 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class WordsDashboardViewModel: ObservableObject {
     @ServiceDependency private(set) var wordCardService: WordCardServiceProtocol
     
     @Published var dataSource: [WordCardsStack] = []
-    @Published var needToShowDashboardPlaceholder: Bool = false
-    
-    private var cancelable: [AnyCancellable] = []
     
     init() {
-        wordCardService.allWordsPublisher
+        wordCardService.allWords
             .map { allWords -> [WordCardsStack] in
                 return allWords.map { $0.topic }
                 .duplicateRemoved()
                 .map { topic -> WordCardsStack in
                     let topicsWords: [WordCard] = allWords.filter { $0.topic == topic }
-                    let color = topicsWords.first?.color ?? .white
+                    let color: Color = .white
                     let description = topicsWords.first?.topic.rawValue ?? ""
-                    let isStack = (topicsWords.count > 1)
-                    return WordCardsStack(isStack: isStack, color: color, description: description)
+                    let hasSeveralCards = (topicsWords.count > 1)
+                    return WordCardsStack(hasSeveralCards: hasSeveralCards, color: color, description: description, topic: topicsWords.first?.topic ?? .home)
                 }
             }
-            .sink { [unowned self] values in
-                self.needToShowDashboardPlaceholder = values.isEmpty
-                self.dataSource = values
-            }
-            .store(in: &cancelable)
+            .assign(to: &$dataSource)
     }
     
     func loadAvaliableTopics() {
