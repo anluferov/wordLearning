@@ -12,6 +12,7 @@
 		CE013BC02856097C00D1EBB1 /* WordCardTaskMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BBF2856097C00D1EBB1 /* WordCardTaskMode.swift */; };
 		CE013BC228560A1800D1EBB1 /* RememberForgotTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BC128560A1800D1EBB1 /* RememberForgotTask.swift */; };
 		CE013BC428560A2100D1EBB1 /* RememberForgotTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BC328560A2100D1EBB1 /* RememberForgotTaskViewModel.swift */; };
+		CE013BC628566D7900D1EBB1 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BC528566D7900D1EBB1 /* Array+Extension.swift */; };
 		CE3841DA2806090A002B7465 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3841D92806090A002B7465 /* View+Extensions.swift */; };
 		CE38C09027F0509D004B200D /* WordLearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C08F27F0509D004B200D /* WordLearningApp.swift */; };
 		CE38C09227F0509D004B200D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C09127F0509D004B200D /* ContentView.swift */; };
@@ -45,6 +46,7 @@
 		CE013BBF2856097C00D1EBB1 /* WordCardTaskMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardTaskMode.swift; sourceTree = "<group>"; };
 		CE013BC128560A1800D1EBB1 /* RememberForgotTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberForgotTask.swift; sourceTree = "<group>"; };
 		CE013BC328560A2100D1EBB1 /* RememberForgotTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberForgotTaskViewModel.swift; sourceTree = "<group>"; };
+		CE013BC528566D7900D1EBB1 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CE3841D92806090A002B7465 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		CE38C08C27F0509D004B200D /* wordLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE38C08F27F0509D004B200D /* WordLearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLearningApp.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6C50B328295BD600AA26C2 /* Sequence+Extension.swift */,
+				CE013BC528566D7900D1EBB1 /* Array+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE38C0A227F0A28C004B200D /* RotatableView.swift in Sources */,
+				CE013BC628566D7900D1EBB1 /* Array+Extension.swift in Sources */,
 				CE6C50B82829A94D00AA26C2 /* WordCardsStack.swift in Sources */,
 				CE7DE46527F8603600399DB4 /* WordCardTopic.swift in Sources */,
 				CE6C50B12829527200AA26C2 /* AppDelegate.swift in Sources */,
