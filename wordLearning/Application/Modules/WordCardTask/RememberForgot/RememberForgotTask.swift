@@ -10,9 +10,18 @@ import SwiftUI
 struct RememberForgotTask: View {
     @ObservedObject var viewModel: RememberForgotTaskViewModel
     
+    init?(viewModel: WordTaskViewModel?) {
+        guard let rememberForgotTaskViewModel = viewModel as? RememberForgotTaskViewModel else {
+            return nil
+        }
+        
+        self.viewModel = rememberForgotTaskViewModel
+    }
+    
     var body: some View {
         RotatableView(
-            isFlipped: $viewModel.isCurrentWordCardFlipped,
+            isFlipped: $viewModel.isWordCardFlipped,
+            animated: $viewModel.isFlippingAnimated,
             frontContent: {
                 Rectangle()
                     .foregroundColor(.white)
@@ -21,8 +30,8 @@ struct RememberForgotTask: View {
                     .overlay(
                         VStack {
                             Spacer()
-                            Text("NATIVE WORD")
-                                .font(.system(size: 25, weight: .black, design: .rounded))
+                            Text(viewModel.currentWordCard?.nativeWord.text ?? "")
+                                .font(.system(size: 23, weight: .black, design: .rounded))
                                 .padding()
                             Spacer()
                             HStack {
@@ -41,8 +50,8 @@ struct RememberForgotTask: View {
                     .overlay(
                         VStack {
                             Spacer()
-                            Text("TRANSLATED WORD")
-                                .font(.system(size: 25, weight: .black, design: .rounded))
+                            Text(viewModel.currentWordCard?.toLearnWord.text ?? "")
+                                .font(.system(size: 23, weight: .black, design: .rounded))
                                 .padding()
                             Spacer()
                             HStack {
@@ -54,11 +63,17 @@ struct RememberForgotTask: View {
             }
         )
         .frame(width: 250.0, height: 250.0)
+        .animation(.easeOut(duration: viewModel.offsetAnimationDuration), value: viewModel.offset)
+        .offset(y: viewModel.offset)
+        .opacity(viewModel.opacity)
+
     }
     
     var rememberButton: some View {
         Button {
-            viewModel.rememberAction()
+            withAnimation {
+                viewModel.rememberWordAction()
+            }
         } label: {
             Image(systemName: "checkmark")
                 .resizable()
@@ -76,7 +91,9 @@ struct RememberForgotTask: View {
     
     var forgotButton: some View {
         Button {
-            viewModel.forgotAction()
+            withAnimation {
+                viewModel.forgotWordAction()
+            }
         } label: {
             Image(systemName: "xmark")
                 .resizable()
@@ -94,9 +111,11 @@ struct RememberForgotTask: View {
     
     var nextCardButton: some View {
         Button {
-            viewModel.nextCardAction()
+            withAnimation {
+                viewModel.nextWordAction()
+            }
         } label: {
-            Image(systemName: "chevron.right")
+            Image(systemName: "checkmark")
                 .resizable()
                 .foregroundColor(.gray)
                 .frame(width: 20.0, height: 20.0)

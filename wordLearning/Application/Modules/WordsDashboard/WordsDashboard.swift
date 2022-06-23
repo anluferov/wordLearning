@@ -60,7 +60,7 @@ struct WordsDashboard: View {
                         )
                         .onTapGesture {
                             withAnimation {
-                                cardTaskViewModel.startTask(with: wordsStack.topic)
+                                cardTaskViewModel.startTaskAction(wordsStack.topic)
                             }
                         }
                         .background(

@@ -11,8 +11,4 @@ struct Word: Identifiable, Hashable {
     var id: UUID = UUID()
     var text: String = ""
     var languageCode: String
-    
-    init(languageCode: String) {
-        self.languageCode = languageCode
-    }
 }

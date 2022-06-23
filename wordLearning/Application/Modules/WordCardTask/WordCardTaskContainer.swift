@@ -10,28 +10,21 @@ import SwiftUI
 struct WordCardTaskContainer: View {
     @EnvironmentObject var viewModel: WordCardTaskContainerViewModel
     
-    @State var isTaskHidden = true
-    
     var namespace: Namespace.ID
     
     var body: some View {
-        switch viewModel.state {
-        case .inactive:
-            EmptyView()
-        case .active:
+        if viewModel.isContainerShown {
             ZStack {
                 background
-                cardTask
+                activeCardTaskContainer
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    withAnimation {
-                        self.isTaskHidden = false
-                    }
+                withAnimation {
+                    viewModel.appearAction()
                 }
             }
             .onDisappear {
-                self.isTaskHidden = true
+                viewModel.disappearAction()
             }
         }
     }
@@ -43,23 +36,34 @@ struct WordCardTaskContainer: View {
             .opacity(0.9)
     }
     
-    var cardTask: some View {
+    var activeCardTaskContainer: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.white)
+                .foregroundColor(viewModel.containerColor)
+                .animation(.easeOut(duration: WordCardTaskContainerViewModel.Constants.backAnimationDuration), value: viewModel.containerColor)
                 .cornerRadius(20)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
                 .matchedGeometryEffect(id: viewModel.matchedGeometryEffectId, in: namespace)
+                .overlay(
+                    activeCardTask
+                )
+                .clipped()
                 .padding(30.0)
                 .onTapGesture {
-                    viewModel.finishTask()
+                    viewModel.finishTaskAction()
                 }
-            
-            if !isTaskHidden {
+        }
+    }
+    
+    var activeCardTask: some View {
+        ZStack {
+            if viewModel.isActiveTaskShown {
                 switch viewModel.taskMode {
                 case .rememberForgot:
-                    RememberForgotTask(viewModel: RememberForgotTaskViewModel(selectedTopic: viewModel.top))
-                        .transition(.move(edge: .bottom))
+                    RememberForgotTask(viewModel: viewModel.activeTaskViewModel)
+                        .onAppear {
+                            viewModel.activeTaskViewModel?.startTaskAction()
+                        }
                 case .writing:
                     Rectangle()
                         .foregroundColor(.blue)

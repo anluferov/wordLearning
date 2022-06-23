@@ -20,14 +20,17 @@ struct RotatableView<FrontContent: View, BackContent: View>: View {
     @State private var backContentDegree = Constants.frontOnTopBackContentDegree
     
     @Binding var isFlipped: Bool
+    @Binding var animated: Bool
     
     private let frontContent: () -> FrontContent
     private let backContent: () -> BackContent
     
     init(isFlipped: Binding<Bool>,
+         animated: Binding<Bool> = .constant(true),
          @ViewBuilder frontContent: @escaping () -> FrontContent,
          @ViewBuilder backContent: @escaping () -> BackContent) {
         self._isFlipped = isFlipped
+        self._animated = animated
         self.frontContent = frontContent
         self.backContent = backContent
     }
@@ -47,10 +50,11 @@ struct RotatableView<FrontContent: View, BackContent: View>: View {
     }
     
     func flipCard() {
-        withAnimation(.linear(duration: Constants.rotationAnimationDuration).delay(isFlipped ? 0.0 : Constants.rotationAnimationDuration)) {
+        let animationDuration = animated ? Constants.rotationAnimationDuration : 0.0
+        withAnimation(.linear(duration: animationDuration).delay(isFlipped ? 0.0 : animationDuration)) {
             frontContentDegree = isFlipped ? Constants.backOnTopFrontContentDegree : Constants.frontOnTopFrontContentDegree
         }
-        withAnimation(.linear(duration: Constants.rotationAnimationDuration).delay(isFlipped ? Constants.rotationAnimationDuration : 0.0)) {
+        withAnimation(.linear(duration: animationDuration).delay(isFlipped ? animationDuration : 0.0)) {
             backContentDegree = isFlipped ? Constants.backOnTopBackContentDegree : Constants.frontOnTopBackContentDegree
         }
     }

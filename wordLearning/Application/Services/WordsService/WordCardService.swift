@@ -35,6 +35,17 @@ class WordCardService: WordCardServiceProtocol {
     }
     
     func fetch() {
-        _allWords.value = [WordCard()]
+//        _allWords.value = [WordCard()]
+        
+        let englishWords = [("perceptive", "проницательный"),
+                            ("inspirational", "вдохновляющий"),
+                            ("obstinate", "упрямый"),
+                            ("conscientious", "добросовестный")]
+
+        _allWords.value = englishWords.map { words in
+            let nativeWord = Word(id: UUID(), text: words.0, languageCode: "en")
+            let toLearnWord = Word(id: UUID(), text: words.1, languageCode: "rus")
+            return WordCard(id: UUID(), nativeWord: nativeWord , toLearnWord: toLearnWord, topic: .home)
+        }
     }
 }
