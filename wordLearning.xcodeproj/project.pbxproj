@@ -7,45 +7,79 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE0F0414280F410B00074324 /* NewWordCardFrontViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F0413280F410B00074324 /* NewWordCardFrontViewModel.swift */; };
-		CE3841DA2806090A002B7465 /* View + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3841D92806090A002B7465 /* View + Extensions.swift */; };
-		CE38C09027F0509D004B200D /* wordLearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C08F27F0509D004B200D /* wordLearningApp.swift */; };
+		CE013BB92855F41900D1EBB1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BB82855F41900D1EBB1 /* UserService.swift */; };
+		CE013BBC2855F42D00D1EBB1 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BBB2855F42D00D1EBB1 /* UserServiceProtocol.swift */; };
+		CE013BC02856097C00D1EBB1 /* WordCardTaskMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BBF2856097C00D1EBB1 /* WordCardTaskMode.swift */; };
+		CE013BC228560A1800D1EBB1 /* RememberForgotTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BC128560A1800D1EBB1 /* RememberForgotTask.swift */; };
+		CE013BC428560A2100D1EBB1 /* RememberForgotTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BC328560A2100D1EBB1 /* RememberForgotTaskViewModel.swift */; };
+		CE013BC628566D7900D1EBB1 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE013BC528566D7900D1EBB1 /* Array+Extension.swift */; };
+		CE2C1442285F44B8009EFF66 /* WordTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2C1441285F44B8009EFF66 /* WordTaskViewModel.swift */; };
+		CE3841DA2806090A002B7465 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3841D92806090A002B7465 /* View+Extensions.swift */; };
+		CE38C09027F0509D004B200D /* WordLearningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C08F27F0509D004B200D /* WordLearningApp.swift */; };
 		CE38C09227F0509D004B200D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C09127F0509D004B200D /* ContentView.swift */; };
 		CE38C09427F0509E004B200D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09327F0509E004B200D /* Assets.xcassets */; };
 		CE38C09727F0509E004B200D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE38C09627F0509E004B200D /* Preview Assets.xcassets */; };
-		CE38C0A227F0A28C004B200D /* RotatableWordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */; };
+		CE38C0A227F0A28C004B200D /* RotatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A127F0A28C004B200D /* RotatableView.swift */; };
 		CE38C0A427F0A331004B200D /* NewWordCardFront.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A327F0A331004B200D /* NewWordCardFront.swift */; };
 		CE38C0A627F0A33E004B200D /* NewWordCardBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */; };
 		CE40F3672804AE2E00326839 /* WordsDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3662804AE2E00326839 /* WordsDashboard.swift */; };
 		CE40F3692804B0CD00326839 /* WordsDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE40F3682804B0CD00326839 /* WordsDashboardViewModel.swift */; };
+		CE6637CD282EDBA20047F98F /* WordCardTaskContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6637CC282EDBA20047F98F /* WordCardTaskContainer.swift */; };
+		CE6637CF282EDBAF0047F98F /* WordCardTaskContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6637CE282EDBAF0047F98F /* WordCardTaskContainerViewModel.swift */; };
+		CE6C50A928294D6C00AA26C2 /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C50A828294D6C00AA26C2 /* ServiceContainer.swift */; };
+		CE6C50AB28294D7700AA26C2 /* ServiceDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C50AA28294D7700AA26C2 /* ServiceDependency.swift */; };
+		CE6C50AE28294DE700AA26C2 /* WordCardServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C50AD28294DE700AA26C2 /* WordCardServiceProtocol.swift */; };
+		CE6C50B12829527200AA26C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C50B02829527200AA26C2 /* AppDelegate.swift */; };
+		CE6C50B428295BD600AA26C2 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C50B328295BD600AA26C2 /* Sequence+Extension.swift */; };
+		CE6C50B82829A94D00AA26C2 /* WordCardsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C50B72829A94D00AA26C2 /* WordCardsStack.swift */; };
 		CE7DE46027F85C9300399DB4 /* NewWordCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE45F27F85C9300399DB4 /* NewWordCardViewModel.swift */; };
 		CE7DE46327F85ED300399DB4 /* WordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46227F85ED300399DB4 /* WordCard.swift */; };
 		CE7DE46527F8603600399DB4 /* WordCardTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46427F8603600399DB4 /* WordCardTopic.swift */; };
 		CE7DE46727F8615800399DB4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46627F8615800399DB4 /* Word.swift */; };
-		CE7DE46A27F8680100399DB4 /* WordsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46927F8680100399DB4 /* WordsService.swift */; };
+		CE7DE46A27F8680100399DB4 /* WordCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46927F8680100399DB4 /* WordCardService.swift */; };
 		CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */; };
+		CEDC3FD52868E71500BB7D56 /* MainCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FD42868E71500BB7D56 /* MainCard.swift */; };
+		CEDC3FDA2868E77E00BB7D56 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FD92868E77E00BB7D56 /* TabBar.swift */; };
+		CEDC3FDE2868FC8100BB7D56 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FDD2868FC8100BB7D56 /* TabBarViewModel.swift */; };
 		CEE6836C27F1A083004DE72B /* NewWordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6836B27F1A083004DE72B /* NewWordCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE0F0413280F410B00074324 /* NewWordCardFrontViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardFrontViewModel.swift; sourceTree = "<group>"; };
-		CE3841D92806090A002B7465 /* View + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extensions.swift"; sourceTree = "<group>"; };
+		CE013BB82855F41900D1EBB1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		CE013BBB2855F42D00D1EBB1 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		CE013BBF2856097C00D1EBB1 /* WordCardTaskMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardTaskMode.swift; sourceTree = "<group>"; };
+		CE013BC128560A1800D1EBB1 /* RememberForgotTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberForgotTask.swift; sourceTree = "<group>"; };
+		CE013BC328560A2100D1EBB1 /* RememberForgotTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberForgotTaskViewModel.swift; sourceTree = "<group>"; };
+		CE013BC528566D7900D1EBB1 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		CE2C1441285F44B8009EFF66 /* WordTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTaskViewModel.swift; sourceTree = "<group>"; };
+		CE3841D92806090A002B7465 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		CE38C08C27F0509D004B200D /* wordLearning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordLearning.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE38C08F27F0509D004B200D /* wordLearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordLearningApp.swift; sourceTree = "<group>"; };
+		CE38C08F27F0509D004B200D /* WordLearningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordLearningApp.swift; sourceTree = "<group>"; };
 		CE38C09127F0509D004B200D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE38C09327F0509E004B200D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE38C09627F0509E004B200D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableWordCardView.swift; sourceTree = "<group>"; };
+		CE38C0A127F0A28C004B200D /* RotatableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableView.swift; sourceTree = "<group>"; };
 		CE38C0A327F0A331004B200D /* NewWordCardFront.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardFront.swift; sourceTree = "<group>"; };
 		CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardBack.swift; sourceTree = "<group>"; };
 		CE40F3662804AE2E00326839 /* WordsDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsDashboard.swift; sourceTree = "<group>"; };
 		CE40F3682804B0CD00326839 /* WordsDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsDashboardViewModel.swift; sourceTree = "<group>"; };
+		CE6637CC282EDBA20047F98F /* WordCardTaskContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardTaskContainer.swift; sourceTree = "<group>"; };
+		CE6637CE282EDBAF0047F98F /* WordCardTaskContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardTaskContainerViewModel.swift; sourceTree = "<group>"; };
+		CE6C50A828294D6C00AA26C2 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
+		CE6C50AA28294D7700AA26C2 /* ServiceDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDependency.swift; sourceTree = "<group>"; };
+		CE6C50AD28294DE700AA26C2 /* WordCardServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardServiceProtocol.swift; sourceTree = "<group>"; };
+		CE6C50B02829527200AA26C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE6C50B328295BD600AA26C2 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
+		CE6C50B72829A94D00AA26C2 /* WordCardsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardsStack.swift; sourceTree = "<group>"; };
 		CE7DE45F27F85C9300399DB4 /* NewWordCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCardViewModel.swift; sourceTree = "<group>"; };
 		CE7DE46227F85ED300399DB4 /* WordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCard.swift; sourceTree = "<group>"; };
 		CE7DE46427F8603600399DB4 /* WordCardTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardTopic.swift; sourceTree = "<group>"; };
 		CE7DE46627F8615800399DB4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
-		CE7DE46927F8680100399DB4 /* WordsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsService.swift; sourceTree = "<group>"; };
+		CE7DE46927F8680100399DB4 /* WordCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardService.swift; sourceTree = "<group>"; };
 		CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulRectangleView.swift; sourceTree = "<group>"; };
+		CEDC3FD42868E71500BB7D56 /* MainCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCard.swift; sourceTree = "<group>"; };
+		CEDC3FD92868E77E00BB7D56 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		CEDC3FDD2868FC8100BB7D56 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		CEE6836B27F1A083004DE72B /* NewWordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,12 +94,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE3841D8280608F6002B7465 /* Utils */ = {
+		CE013BBA2855F41E00D1EBB1 /* UserService */ = {
 			isa = PBXGroup;
 			children = (
-				CE3841D92806090A002B7465 /* View + Extensions.swift */,
+				CE013BBB2855F42D00D1EBB1 /* UserServiceProtocol.swift */,
+				CE013BB82855F41900D1EBB1 /* UserService.swift */,
 			);
-			path = Utils;
+			path = UserService;
+			sourceTree = "<group>";
+		};
+		CE013BBD2856092300D1EBB1 /* RememberForgot */ = {
+			isa = PBXGroup;
+			children = (
+				CE013BC128560A1800D1EBB1 /* RememberForgotTask.swift */,
+				CE013BC328560A2100D1EBB1 /* RememberForgotTaskViewModel.swift */,
+			);
+			path = RememberForgot;
+			sourceTree = "<group>";
+		};
+		CE013BBE2856093200D1EBB1 /* Writing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Writing;
 			sourceTree = "<group>";
 		};
 		CE38C08327F0509D004B200D = {
@@ -87,16 +138,9 @@
 		CE38C08E27F0509D004B200D /* wordLearning */ = {
 			isa = PBXGroup;
 			children = (
-				CE38C08F27F0509D004B200D /* wordLearningApp.swift */,
-				CE38C09127F0509D004B200D /* ContentView.swift */,
-				CE40F3652804AE1400326839 /* WordsDashboard */,
-				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
-				CEE3E9AE27F218DC00B5D445 /* WordCard */,
-				CE7DE46827F865E200399DB4 /* Service */,
-				CE7DE46127F85EC200399DB4 /* Model */,
-				CE3841D8280608F6002B7465 /* Utils */,
-				CE38C09327F0509E004B200D /* Assets.xcassets */,
-				CE38C09527F0509E004B200D /* Preview Content */,
+				CE6C50A12829454600AA26C2 /* Application */,
+				CE6C50A22829454F00AA26C2 /* Library */,
+				CE6C50A32829456200AA26C2 /* Resources */,
 			);
 			path = wordLearning;
 			sourceTree = "<group>";
@@ -114,8 +158,118 @@
 			children = (
 				CE40F3662804AE2E00326839 /* WordsDashboard.swift */,
 				CE40F3682804B0CD00326839 /* WordsDashboardViewModel.swift */,
+				CE6C50B72829A94D00AA26C2 /* WordCardsStack.swift */,
 			);
 			path = WordsDashboard;
+			sourceTree = "<group>";
+		};
+		CE6637CB282EDB740047F98F /* WordCardTask */ = {
+			isa = PBXGroup;
+			children = (
+				CE6637CC282EDBA20047F98F /* WordCardTaskContainer.swift */,
+				CE6637CE282EDBAF0047F98F /* WordCardTaskContainerViewModel.swift */,
+				CE2C1441285F44B8009EFF66 /* WordTaskViewModel.swift */,
+				CE013BBD2856092300D1EBB1 /* RememberForgot */,
+				CE013BBE2856093200D1EBB1 /* Writing */,
+			);
+			path = WordCardTask;
+			sourceTree = "<group>";
+		};
+		CE6C50A12829454600AA26C2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50A42829457000AA26C2 /* Modules */,
+				CE6C50A52829457700AA26C2 /* Services */,
+				CE7DE46127F85EC200399DB4 /* Model */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		CE6C50A22829454F00AA26C2 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50B228295BC800AA26C2 /* Foundation */,
+				CE6C50A6282945B400AA26C2 /* SwiftUI */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		CE6C50A32829456200AA26C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE38C09527F0509E004B200D /* Preview Content */,
+				CE38C09327F0509E004B200D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE6C50A42829457000AA26C2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50AF2829525C00AA26C2 /* Launch */,
+				CEDC3FD62868E73F00BB7D56 /* TabBar */,
+				CEDC3FD32868E6E700BB7D56 /* MainCard */,
+				CE40F3652804AE1400326839 /* WordsDashboard */,
+				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
+				CE6637CB282EDB740047F98F /* WordCardTask */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CE6C50A52829457700AA26C2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50A728294D5900AA26C2 /* DI */,
+				CE013BBA2855F41E00D1EBB1 /* UserService */,
+				CE6C50AC28294DAC00AA26C2 /* WordsService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE6C50A6282945B400AA26C2 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				CECA5539283BD1D900980760 /* Common UI */,
+				CE3841D92806090A002B7465 /* View+Extensions.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		CE6C50A728294D5900AA26C2 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50A828294D6C00AA26C2 /* ServiceContainer.swift */,
+				CE6C50AA28294D7700AA26C2 /* ServiceDependency.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		CE6C50AC28294DAC00AA26C2 /* WordsService */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50AD28294DE700AA26C2 /* WordCardServiceProtocol.swift */,
+				CE7DE46927F8680100399DB4 /* WordCardService.swift */,
+			);
+			path = WordsService;
+			sourceTree = "<group>";
+		};
+		CE6C50AF2829525C00AA26C2 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50B02829527200AA26C2 /* AppDelegate.swift */,
+				CE38C08F27F0509D004B200D /* WordLearningApp.swift */,
+				CE38C09127F0509D004B200D /* ContentView.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		CE6C50B228295BC800AA26C2 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C50B328295BD600AA26C2 /* Sequence+Extension.swift */,
+				CE013BC528566D7900D1EBB1 /* Array+Extension.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		CE7DE45E27F85C7B00399DB4 /* NewWordCard */ = {
@@ -125,7 +279,6 @@
 				CE38C0A327F0A331004B200D /* NewWordCardFront.swift */,
 				CE38C0A527F0A33E004B200D /* NewWordCardBack.swift */,
 				CE7DE45F27F85C9300399DB4 /* NewWordCardViewModel.swift */,
-				CE0F0413280F410B00074324 /* NewWordCardFrontViewModel.swift */,
 			);
 			path = NewWordCard;
 			sourceTree = "<group>";
@@ -133,28 +286,38 @@
 		CE7DE46127F85EC200399DB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DE46627F8615800399DB4 /* Word.swift */,
 				CE7DE46227F85ED300399DB4 /* WordCard.swift */,
+				CE7DE46627F8615800399DB4 /* Word.swift */,
 				CE7DE46427F8603600399DB4 /* WordCardTopic.swift */,
+				CE013BBF2856097C00D1EBB1 /* WordCardTaskMode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CE7DE46827F865E200399DB4 /* Service */ = {
+		CECA5539283BD1D900980760 /* Common UI */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DE46927F8680100399DB4 /* WordsService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		CEE3E9AE27F218DC00B5D445 /* WordCard */ = {
-			isa = PBXGroup;
-			children = (
-				CE38C0A127F0A28C004B200D /* RotatableWordCardView.swift */,
+				CE38C0A127F0A28C004B200D /* RotatableView.swift */,
 				CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */,
 			);
-			path = WordCard;
+			path = "Common UI";
+			sourceTree = "<group>";
+		};
+		CEDC3FD32868E6E700BB7D56 /* MainCard */ = {
+			isa = PBXGroup;
+			children = (
+				CEDC3FD42868E71500BB7D56 /* MainCard.swift */,
+			);
+			path = MainCard;
+			sourceTree = "<group>";
+		};
+		CEDC3FD62868E73F00BB7D56 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CEDC3FD92868E77E00BB7D56 /* TabBar.swift */,
+				CEDC3FDD2868FC8100BB7D56 /* TabBarViewModel.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,22 +390,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE38C0A227F0A28C004B200D /* RotatableWordCardView.swift in Sources */,
+				CE38C0A227F0A28C004B200D /* RotatableView.swift in Sources */,
+				CE013BC628566D7900D1EBB1 /* Array+Extension.swift in Sources */,
+				CE6C50B82829A94D00AA26C2 /* WordCardsStack.swift in Sources */,
 				CE7DE46527F8603600399DB4 /* WordCardTopic.swift in Sources */,
+				CE6C50B12829527200AA26C2 /* AppDelegate.swift in Sources */,
 				CE38C0A627F0A33E004B200D /* NewWordCardBack.swift in Sources */,
 				CE38C0A427F0A331004B200D /* NewWordCardFront.swift in Sources */,
+				CE6637CD282EDBA20047F98F /* WordCardTaskContainer.swift in Sources */,
 				CE7DE46027F85C9300399DB4 /* NewWordCardViewModel.swift in Sources */,
+				CE6C50A928294D6C00AA26C2 /* ServiceContainer.swift in Sources */,
 				CE38C09227F0509D004B200D /* ContentView.swift in Sources */,
-				CE38C09027F0509D004B200D /* wordLearningApp.swift in Sources */,
+				CE2C1442285F44B8009EFF66 /* WordTaskViewModel.swift in Sources */,
+				CEDC3FD52868E71500BB7D56 /* MainCard.swift in Sources */,
+				CE013BBC2855F42D00D1EBB1 /* UserServiceProtocol.swift in Sources */,
+				CE38C09027F0509D004B200D /* WordLearningApp.swift in Sources */,
 				CE7DE46727F8615800399DB4 /* Word.swift in Sources */,
 				CE40F3672804AE2E00326839 /* WordsDashboard.swift in Sources */,
-				CE7DE46A27F8680100399DB4 /* WordsService.swift in Sources */,
+				CE7DE46A27F8680100399DB4 /* WordCardService.swift in Sources */,
+				CE6C50B428295BD600AA26C2 /* Sequence+Extension.swift in Sources */,
+				CEDC3FDA2868E77E00BB7D56 /* TabBar.swift in Sources */,
+				CE6637CF282EDBAF0047F98F /* WordCardTaskContainerViewModel.swift in Sources */,
+				CE013BC02856097C00D1EBB1 /* WordCardTaskMode.swift in Sources */,
 				CE40F3692804B0CD00326839 /* WordsDashboardViewModel.swift in Sources */,
 				CEE6836C27F1A083004DE72B /* NewWordCard.swift in Sources */,
-				CE3841DA2806090A002B7465 /* View + Extensions.swift in Sources */,
+				CE6C50AE28294DE700AA26C2 /* WordCardServiceProtocol.swift in Sources */,
+				CE3841DA2806090A002B7465 /* View+Extensions.swift in Sources */,
+				CE013BB92855F41900D1EBB1 /* UserService.swift in Sources */,
 				CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */,
+				CE013BC228560A1800D1EBB1 /* RememberForgotTask.swift in Sources */,
+				CE013BC428560A2100D1EBB1 /* RememberForgotTaskViewModel.swift in Sources */,
+				CE6C50AB28294D7700AA26C2 /* ServiceDependency.swift in Sources */,
+				CEDC3FDE2868FC8100BB7D56 /* TabBarViewModel.swift in Sources */,
 				CE7DE46327F85ED300399DB4 /* WordCard.swift in Sources */,
-				CE0F0414280F410B00074324 /* NewWordCardFrontViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +552,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Resources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -400,7 +580,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"wordLearning/Resources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
