@@ -52,7 +52,7 @@ class RememberForgotTaskViewModel: ObservableObject, WordTaskViewModel {
     init(selectedTopic: WordCardTopic) {
         self.selectedTopic = selectedTopic
         
-        // TODO: check if all words pipelane really execute always before state / currentWordCardIndex pipeline
+        //TODO: check if all words pipelane really execute always before state / currentWordCardIndex pipeline
         _ = wordCardService.allWords
             .sink(receiveValue: { [weak self] allWords in
                 guard let self = self else { return }
@@ -111,6 +111,10 @@ class RememberForgotTaskViewModel: ObservableObject, WordTaskViewModel {
     
     func startTaskAction() {
         state.value = .centerNativeSide
+    }
+    
+    func finishTaskAction() {
+        state.value = .inactive
     }
     
     func rememberWordAction() {

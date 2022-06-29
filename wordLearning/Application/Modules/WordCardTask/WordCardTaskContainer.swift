@@ -8,23 +8,26 @@
 import SwiftUI
 
 struct WordCardTaskContainer: View {
-    @EnvironmentObject var viewModel: WordCardTaskContainerViewModel
+    @EnvironmentObject var taskContainerViewModel: WordCardTaskContainerViewModel
+    @EnvironmentObject var tabBarViewModel: TabBarViewModel
     
     var namespace: Namespace.ID
     
     var body: some View {
-        if viewModel.isContainerShown {
+        if taskContainerViewModel.isContainerShown {
             ZStack {
                 background
                 activeCardTaskContainer
             }
             .onAppear {
                 withAnimation {
-                    viewModel.appearAction()
+                    taskContainerViewModel.appearAction()
+                    tabBarViewModel.appearTaskContainerAction()
                 }
             }
             .onDisappear {
-                viewModel.disappearAction()
+                taskContainerViewModel.disappearAction()
+                tabBarViewModel.disappearTaskContainerAction()
             }
         }
     }
@@ -39,30 +42,29 @@ struct WordCardTaskContainer: View {
     var activeCardTaskContainer: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(viewModel.containerColor)
-                .animation(.easeOut(duration: WordCardTaskContainerViewModel.Constants.backAnimationDuration), value: viewModel.containerColor)
+                .foregroundColor(taskContainerViewModel.containerColor)
+                .animation(.easeOut(duration: WordCardTaskContainerViewModel.Constants.backAnimationDuration), value: taskContainerViewModel.containerColor)
                 .cornerRadius(20)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-                .matchedGeometryEffect(id: viewModel.matchedGeometryEffectId, in: namespace)
+            //TODO: fix geometry hero animation from dashboard to task container
+//                .matchedGeometryEffect(id: viewModel.matchedGeometryEffectId, in: namespace)
                 .overlay(
                     activeCardTask
                 )
                 .clipped()
                 .padding(30.0)
-                .onTapGesture {
-                    viewModel.finishTaskAction()
-                }
+                .overlay(closeButton, alignment: .topTrailing)
         }
     }
     
     var activeCardTask: some View {
         ZStack {
-            if viewModel.isActiveTaskShown {
-                switch viewModel.taskMode {
+            if taskContainerViewModel.isActiveTaskShown {
+                switch taskContainerViewModel.taskMode {
                 case .rememberForgot:
-                    RememberForgotTask(viewModel: viewModel.activeTaskViewModel)
+                    RememberForgotTask(viewModel: taskContainerViewModel.activeTaskViewModel)
                         .onAppear {
-                            viewModel.activeTaskViewModel?.startTaskAction()
+                            taskContainerViewModel.activeTaskViewModel?.startTaskAction()
                         }
                 case .writing:
                     Rectangle()
@@ -73,6 +75,20 @@ struct WordCardTaskContainer: View {
                 }
             }
         }
+    }
+    
+    var closeButton: some View {
+        Button {
+            taskContainerViewModel.activeTaskViewModel?.finishTaskAction()
+            taskContainerViewModel.finishTaskAction()
+        } label: {
+            Image(systemName: "xmark")
+                .foregroundColor(.black)
+                .font(Font.title.weight(.bold))
+                .frame(width: 20.0, height: 20.0)
+                .padding(EdgeInsets(top: 30.0, leading: 0.0, bottom: 0.0, trailing: 30.0))
+        }
+        .padding()
     }
 }
 

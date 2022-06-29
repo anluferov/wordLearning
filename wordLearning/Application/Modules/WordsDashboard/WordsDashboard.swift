@@ -12,6 +12,7 @@ struct WordsDashboard: View {
     //TODO: remove cardCreationViewModel from dashboard module
     @EnvironmentObject private var cardCreationViewModel: NewWordCardViewModel
     @EnvironmentObject private var cardTaskViewModel: WordCardTaskContainerViewModel
+    @EnvironmentObject private var tabBarViewModel: TabBarViewModel
     
     //TODO: create animated appearance of wordCardTask
     var cardTaskNamespace: Namespace.ID
@@ -51,7 +52,8 @@ struct WordsDashboard: View {
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
                         .matchedGeometryEffect(id: cardCreationViewModel.state == .saving ? wordsStack.description : wordsStack.description + "disabled",
                                                in: cardCreationNamespace)
-                        .matchedGeometryEffect(id: wordsStack.description, in: cardTaskNamespace)
+                    //TODO: fix geometry hero animation from dashboard to task container
+//                        .matchedGeometryEffect(id: wordsStack.description, in: cardTaskNamespace, isSource: true)
                         .frame(width: 200.0, height: 200.0)
                         .padding()
                         .overlay(

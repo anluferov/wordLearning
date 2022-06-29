@@ -20,4 +20,7 @@ protocol WordTaskViewModel {
     
     // call this method to start task flow
     func startTaskAction()
+    
+    // call this method to finish task flow
+    func finishTaskAction()
 }

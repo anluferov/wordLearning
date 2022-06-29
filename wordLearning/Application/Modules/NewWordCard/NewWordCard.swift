@@ -30,7 +30,7 @@ struct NewWordCard: View {
     var movableNewCard: some View {
         GeometryReader { geometryProxy in
             VStack {
-                HStack() {
+                HStack {
                     if viewModel.state != .saving {
                         RotatableView(
                             isFlipped: $viewModel.isFlipped,
@@ -73,7 +73,7 @@ struct NewWordCard: View {
     func cardYOffset(_ proxy: GeometryProxy) -> CGFloat {
         switch viewModel.state {
         case .inactive, .dragToActive:
-            let notHiddenCardSideTopOffset: CGFloat = 30.0
+            let notHiddenCardSideTopOffset: CGFloat = 40.0
             return (proxy.size.height/2 + viewModel.cardSide/2) - notHiddenCardSideTopOffset
         case .activeFront, .activeBack, .dragToInactive:
             return 0.0
