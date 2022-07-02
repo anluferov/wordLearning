@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 
-class TabBarViewModel: ObservableObject {
+final class TabBarViewModel: ObservableObject {
     enum State {
         case mainNonActiveTask
         case mainActiveTask
@@ -40,7 +41,9 @@ class TabBarViewModel: ObservableObject {
             }
             .store(in: &cancelable)
     }
-    
+}
+
+extension TabBarViewModel {
     func updateTabAction(_ tabBarItem: TabBarItem) {
         switch tabBarItem {
         case .main:

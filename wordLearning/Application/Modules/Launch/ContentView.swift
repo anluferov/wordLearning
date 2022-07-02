@@ -13,12 +13,11 @@ struct Preview: Identifiable {
 }
 
 struct ContentView: View {
-    @Namespace var cardCreationNamespace
-    @Namespace var taskСardNamespace
-
     var body: some View {
         TabBar()
             .environmentObject(TabBarViewModel())
+            .environmentObject(NewWordCardViewModel())
+            .environmentObject(WordCardTaskContainerViewModel())
     }
 }
 

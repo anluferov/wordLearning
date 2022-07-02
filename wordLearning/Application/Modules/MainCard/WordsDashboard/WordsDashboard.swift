@@ -18,8 +18,6 @@ struct WordsDashboard: View {
     var cardTaskNamespace: Namespace.ID
     var cardCreationNamespace: Namespace.ID
     
-    @State private var showingSheet = false
-    
     var body: some View {
         VStack {
             navigation
@@ -32,7 +30,7 @@ struct WordsDashboard: View {
             Spacer()
         }
         .onAppear(perform: {
-            viewModel.loadAvaliableTopics()
+            viewModel.dashboardAppearAction()
         })
     }
     
@@ -50,7 +48,7 @@ struct WordsDashboard: View {
                         .foregroundColor(wordsStack.color)
                         .cornerRadius(20.0)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-                        .matchedGeometryEffect(id: cardCreationViewModel.state == .saving ? wordsStack.description : wordsStack.description + "disabled",
+                        .matchedGeometryEffect(id: !cardCreationViewModel.isCardShown ? wordsStack.description : wordsStack.description + "disabled",
                                                in: cardCreationNamespace)
                     //TODO: fix geometry hero animation from dashboard to task container
 //                        .matchedGeometryEffect(id: wordsStack.description, in: cardTaskNamespace, isSource: true)

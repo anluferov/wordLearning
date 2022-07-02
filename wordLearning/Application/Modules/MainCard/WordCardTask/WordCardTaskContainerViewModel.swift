@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class WordCardTaskContainerViewModel: ObservableObject {
+final class WordCardTaskContainerViewModel: ObservableObject {
     struct Constants {
         static let loadingTaskDuration: Double = 0.4
         static let wordCheckColorDuration: Double = 0.4
@@ -68,7 +68,9 @@ class WordCardTaskContainerViewModel: ObservableObject {
             })
             .store(in: &cancelable)
     }
-    
+}
+
+extension WordCardTaskContainerViewModel {
     func appearAction() {
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.loadingTaskDuration) {
             self.state.value = .activeTask

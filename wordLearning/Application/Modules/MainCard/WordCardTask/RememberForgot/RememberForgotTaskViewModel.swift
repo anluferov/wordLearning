@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class RememberForgotTaskViewModel: ObservableObject, WordTaskViewModel {
+final class RememberForgotTaskViewModel: ObservableObject, WordTaskViewModel {
     struct Constants {
         static let showingToLearnWordInterval: Double = 1.6
         static let hidingWordInterval: Double = 0.8
@@ -108,7 +108,9 @@ class RememberForgotTaskViewModel: ObservableObject, WordTaskViewModel {
             }
             .store(in: &cancelable)
     }
-    
+}
+
+extension RememberForgotTaskViewModel {
     func startTaskAction() {
         state.value = .centerNativeSide
     }

@@ -1,5 +1,5 @@
 //
-//  WordCardFront.swift
+//  WordCardBack.swift
 //  wordLearning
 //
 //  Created by Andrey Luferau on 3/27/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewWordCardFront: View {
+struct NewWordCardBack: View {
     @EnvironmentObject var viewModel: NewWordCardViewModel
     
     @FocusState private var textFieldIsFocused: Bool
@@ -17,28 +17,13 @@ struct NewWordCardFront: View {
             .foregroundColor(.white)
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-            .overlay(topConfiguration, alignment: .topLeading)
-            .overlay(topHint, alignment: .top)
-            .overlay(toLearnWordTextField, alignment: .center)
-            .overlay(nextButton, alignment: .bottomTrailing)
+            .overlay(nativeWordTextField, alignment: .center)
+            .overlay(backButton, alignment: .bottomLeading)
+            .overlay(saveButton, alignment: .bottomTrailing)
     }
     
-    var topConfiguration: some View {
-        HStack {
-            topicMenu
-            Spacer()
-        }
-        .padding()
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(10.0)
-        .padding()
-        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-        .animation(.linear, value: viewModel.topConfigurationBlurRadius)
-        .blur(radius: viewModel.topConfigurationBlurRadius)
-    }
-    
-    var toLearnWordTextField: some View {
-        TextField(viewModel.toLearnTextPlaceholder, text: $viewModel.wordCard.toLearnWord.text)
+    var nativeWordTextField: some View {
+        TextField(NewWordCardViewModel.Constants.nativeTextPlaceholder, text: $viewModel.nativeText)
             .textFieldStyle(.roundedBorder)
             .font(.system(size: 20, weight: .bold, design: .rounded))
             .focused($textFieldIsFocused)
@@ -46,12 +31,12 @@ struct NewWordCardFront: View {
             .padding()
     }
     
-    var nextButton: some View {
+    var backButton: some View {
         Button {
             textFieldIsFocused = false
-            viewModel.flipForwardButtonAction()
+            viewModel.flipBackButtonAction()
         } label: {
-            Image(systemName: "arrow.forward")
+            Image(systemName: "arrow.backward")
                 .resizable()
                 .foregroundColor(.gray)
                 .frame(width: 20.0, height: 20.0)
@@ -65,23 +50,25 @@ struct NewWordCardFront: View {
         .padding()
     }
     
-    var topicMenu: some View {
-        Menu(viewModel.wordCard.topic.rawValue) {
-            ForEach(WordCardTopic.allCases, id: \.self) { topic in
-                Button(topic.rawValue) {
-                    viewModel.updateTopicAction(topic)
-                }
+    var saveButton: some View {
+        Button {
+            textFieldIsFocused = false
+            withAnimation {
+                viewModel.saveButtonAction()
             }
+        } label: {
+            Image(systemName: "checkmark")
+                .resizable()
+                .foregroundColor(.gray)
+                .frame(width: 20.0, height: 20.0)
+                .padding()
+                .background(
+                    Circle()
+                        .foregroundColor(Color.gray.opacity(0.2))
+                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
+                )
         }
-        .menuStyle(CustomConfigurationMenuStyle())
-    }
-    
-    var topHint: some View {
-        Text("Swipe up to create new card")
-            .font(.system(size: 12, weight: .thin, design: .rounded))
-            .padding()
-            .animation(.linear, value: viewModel.hintOpacity)
-            .opacity(viewModel.hintOpacity)
+        .padding()
     }
 }
 
@@ -96,10 +83,10 @@ fileprivate struct CustomConfigurationMenuStyle: MenuStyle {
     }
 }
 
-struct WordCardFront_Previews: PreviewProvider {
+struct WordCardBack_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            NewWordCardFront()
+            NewWordCardBack()
                 .frame(width: 300.0, height: 300.0)
                 .environmentObject(NewWordCardViewModel.init())
         }

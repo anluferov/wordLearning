@@ -9,10 +9,16 @@ import Foundation
 import Combine
 import SwiftUI
 
-class WordsDashboardViewModel: ObservableObject {
+final class WordsDashboardViewModel: ObservableObject {
     @ServiceDependency private(set) var wordCardService: WordCardServiceProtocol
     
     @Published var dataSource: [WordCardsStack] = []
+    
+    //    @Published var nextAvaliableColor: Color = WordCardColors[1]
+    //    func updateColorToNextAvaliable() {
+    //        wordCard.color = calculateNextColor()
+    //        nextAvaliableColor = calculateNextColor()
+    //    }
     
     init() {
         wordCardService.allWords
@@ -29,8 +35,10 @@ class WordsDashboardViewModel: ObservableObject {
             }
             .assign(to: &$dataSource)
     }
-    
-    func loadAvaliableTopics() {
+}
+
+extension WordsDashboardViewModel {
+    func dashboardAppearAction() {
         wordCardService.fetch()
     }
 }

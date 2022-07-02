@@ -38,6 +38,7 @@
 		CE7DE46727F8615800399DB4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46627F8615800399DB4 /* Word.swift */; };
 		CE7DE46A27F8680100399DB4 /* WordCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46927F8680100399DB4 /* WordCardService.swift */; };
 		CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */; };
+		CE89063228703E2000391815 /* Equitable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89063128703E2000391815 /* Equitable+Extension.swift */; };
 		CEDC3FD52868E71500BB7D56 /* MainCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FD42868E71500BB7D56 /* MainCard.swift */; };
 		CEDC3FDA2868E77E00BB7D56 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FD92868E77E00BB7D56 /* TabBar.swift */; };
 		CEDC3FDE2868FC8100BB7D56 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FDD2868FC8100BB7D56 /* TabBarViewModel.swift */; };
@@ -77,6 +78,7 @@
 		CE7DE46627F8615800399DB4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CE7DE46927F8680100399DB4 /* WordCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardService.swift; sourceTree = "<group>"; };
 		CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulRectangleView.swift; sourceTree = "<group>"; };
+		CE89063128703E2000391815 /* Equitable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equitable+Extension.swift"; sourceTree = "<group>"; };
 		CEDC3FD42868E71500BB7D56 /* MainCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCard.swift; sourceTree = "<group>"; };
 		CEDC3FD92868E77E00BB7D56 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CEDC3FDD2868FC8100BB7D56 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
@@ -207,11 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6C50AF2829525C00AA26C2 /* Launch */,
-				CEDC3FD62868E73F00BB7D56 /* TabBar */,
 				CEDC3FD32868E6E700BB7D56 /* MainCard */,
-				CE40F3652804AE1400326839 /* WordsDashboard */,
-				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
-				CE6637CB282EDB740047F98F /* WordCardTask */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -259,6 +257,7 @@
 				CE6C50B02829527200AA26C2 /* AppDelegate.swift */,
 				CE38C08F27F0509D004B200D /* WordLearningApp.swift */,
 				CE38C09127F0509D004B200D /* ContentView.swift */,
+				CEDC3FD62868E73F00BB7D56 /* TabBar */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -268,6 +267,7 @@
 			children = (
 				CE6C50B328295BD600AA26C2 /* Sequence+Extension.swift */,
 				CE013BC528566D7900D1EBB1 /* Array+Extension.swift */,
+				CE89063128703E2000391815 /* Equitable+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -307,6 +307,9 @@
 			isa = PBXGroup;
 			children = (
 				CEDC3FD42868E71500BB7D56 /* MainCard.swift */,
+				CE40F3652804AE1400326839 /* WordsDashboard */,
+				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
+				CE6637CB282EDB740047F98F /* WordCardTask */,
 			);
 			path = MainCard;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */,
 				CE013BC228560A1800D1EBB1 /* RememberForgotTask.swift in Sources */,
 				CE013BC428560A2100D1EBB1 /* RememberForgotTaskViewModel.swift in Sources */,
+				CE89063228703E2000391815 /* Equitable+Extension.swift in Sources */,
 				CE6C50AB28294D7700AA26C2 /* ServiceDependency.swift in Sources */,
 				CEDC3FDE2868FC8100BB7D56 /* TabBarViewModel.swift in Sources */,
 				CE7DE46327F85ED300399DB4 /* WordCard.swift in Sources */,

@@ -28,8 +28,6 @@ struct MainCard: View {
             //-------------------------------------------------------
             WordCardTaskContainer(namespace: taskСardNamespace)
         }
-        .environmentObject(NewWordCardViewModel())
-        .environmentObject(WordCardTaskContainerViewModel())
     }
 }
 

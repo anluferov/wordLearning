@@ -31,17 +31,17 @@ struct NewWordCard: View {
         GeometryReader { geometryProxy in
             VStack {
                 HStack {
-                    if viewModel.state != .saving {
+                    if viewModel.isCardShown {
                         RotatableView(
-                            isFlipped: $viewModel.isFlipped,
+                            isFlipped: $viewModel.isCardFlipped,
                             frontContent: {
                                 NewWordCardFront()
                             }, backContent: {
                                 NewWordCardBack()
                             }
                         )
-                        .matchedGeometryEffect(id: viewModel.wordCard.topic.rawValue, in: namespace, isSource: false)
-                        .frame(width: viewModel.cardSide, height: viewModel.cardSide)
+                        .matchedGeometryEffect(id: viewModel.matchedGeometryEffectId, in: namespace, isSource: false)
+                        .frame(width: NewWordCardViewModel.Constants.cardSide, height: NewWordCardViewModel.Constants.cardSide)
                         .animation(.spring(), value: dragValue)
                         .offset(dragValue)
                         .gesture(
@@ -50,8 +50,7 @@ struct NewWordCard: View {
                                     dragValueState.height = value.translation.height
                                 }
                                 .onChanged {
-                                    let distance = Double(geometryProxy.size.height/2)
-                                    viewModel.dragGestureChangedAction($0, fullDragDistance: distance)
+                                    viewModel.dragGestureChangedAction($0)
                                 }
                                 .onEnded { _ in
                                     withAnimation(.spring()) {
@@ -59,26 +58,15 @@ struct NewWordCard: View {
                                     }
                                 }
                         )
-                        .offset(y: cardYOffset(geometryProxy))
+                        .offset(y: viewModel.cardYOffset)
                     }
                 }
                 .frame(maxWidth: .infinity)
             }
             .frame(maxHeight: .infinity)
-            .environmentObject(viewModel)
-        }
-    }
-       
-    
-    func cardYOffset(_ proxy: GeometryProxy) -> CGFloat {
-        switch viewModel.state {
-        case .inactive, .dragToActive:
-            let notHiddenCardSideTopOffset: CGFloat = 40.0
-            return (proxy.size.height/2 + viewModel.cardSide/2) - notHiddenCardSideTopOffset
-        case .activeFront, .activeBack, .dragToInactive:
-            return 0.0
-        default:
-            return 0.0
+            .onAppear {
+                viewModel.appearInContainerAction(geometryProxy)
+            }
         }
     }
 }
