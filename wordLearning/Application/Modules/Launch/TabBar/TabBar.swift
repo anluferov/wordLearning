@@ -11,34 +11,60 @@ struct TabBar: View {
     @EnvironmentObject var viewModel: TabBarViewModel
     
     var body: some View {
-        TabView {
-            VStack(spacing: 0.0) {
-                MainCard()
-                Rectangle()
-                    .fill(Color.clear)
-                    .frame(height: 0)
-                    .background(viewModel.isTabBardShown ? .white : .clear)
+        TabView(selection: $viewModel.selectedTabBarItem) {
+            mainTab
+                .tag(TabBarViewModel.TabBarItem.main)
+            statisticsTab
+                .tag(TabBarViewModel.TabBarItem.statistic)
+            settingsTab
+                .tag(TabBarViewModel.TabBarItem.account)
+        }
+        // TODO: need to understand how to set color of selected tab item
+        // accentColor works but deprecated
+//        .accentColor(.orange)
+    }
+    
+    var mainTab: some View {
+        VStack(spacing: 0.0) {
+            MainCard()
+            Rectangle()
+                .fill(Color.clear)
+                .frame(height: 0)
+                .background(viewModel.isTabBarShown ? .white : .clear)
+        }
+        .tabItem {
+            if viewModel.isTabBarShown {
+                Label("Main", systemImage: "square")
+                    .tint(.red)
+                    .onTapGesture {
+                        viewModel.updateTabAction(.main)
+                    }
             }
+        }
+    }
+    
+    var statisticsTab: some View {
+        Statistics()
             .tabItem {
-                if viewModel.isTabBardShown {
-                    Label("Main", systemImage: "list.dash")
+                if viewModel.isTabBarShown {
+                    Label("Statistic", systemImage: "chart.pie")
                         .onTapGesture {
-                            viewModel.updateTabAction(.main)
+                            viewModel.updateTabAction(.statistic)
                         }
                 }
             }
-
-            Color.yellow
-                .ignoresSafeArea(.container, edges: .top)
-                .tabItem {
-                    if viewModel.isTabBardShown {
-                        Label("Account", systemImage: "square.and.pencil")
-                            .onTapGesture {
-                                viewModel.updateTabAction(.account)
-                            }
-                    }
+    }
+    
+    var settingsTab: some View {
+        Settings()
+            .tabItem {
+                if viewModel.isTabBarShown {
+                    Label("Settings", systemImage: "gear")
+                        .onTapGesture {
+                            viewModel.updateTabAction(.account)
+                        }
                 }
-        }
+            }
     }
 }
 
