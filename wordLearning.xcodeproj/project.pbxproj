@@ -38,6 +38,9 @@
 		CE7DE46727F8615800399DB4 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46627F8615800399DB4 /* Word.swift */; };
 		CE7DE46A27F8680100399DB4 /* WordCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46927F8680100399DB4 /* WordCardService.swift */; };
 		CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */; };
+		CE89063228703E2000391815 /* Equitable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89063128703E2000391815 /* Equitable+Extension.swift */; };
+		CE89063A2870AE1D00391815 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8906392870AE1D00391815 /* Statistics.swift */; };
+		CE89063C2870AEFC00391815 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE89063B2870AEFC00391815 /* Settings.swift */; };
 		CEDC3FD52868E71500BB7D56 /* MainCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FD42868E71500BB7D56 /* MainCard.swift */; };
 		CEDC3FDA2868E77E00BB7D56 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FD92868E77E00BB7D56 /* TabBar.swift */; };
 		CEDC3FDE2868FC8100BB7D56 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC3FDD2868FC8100BB7D56 /* TabBarViewModel.swift */; };
@@ -77,6 +80,9 @@
 		CE7DE46627F8615800399DB4 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CE7DE46927F8680100399DB4 /* WordCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCardService.swift; sourceTree = "<group>"; };
 		CE7DE46B27F9A77700399DB4 /* ColorfulRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulRectangleView.swift; sourceTree = "<group>"; };
+		CE89063128703E2000391815 /* Equitable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Equitable+Extension.swift"; sourceTree = "<group>"; };
+		CE8906392870AE1D00391815 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		CE89063B2870AEFC00391815 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CEDC3FD42868E71500BB7D56 /* MainCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCard.swift; sourceTree = "<group>"; };
 		CEDC3FD92868E77E00BB7D56 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CEDC3FDD2868FC8100BB7D56 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
@@ -212,6 +218,8 @@
 				CE40F3652804AE1400326839 /* WordsDashboard */,
 				CE7DE45E27F85C7B00399DB4 /* NewWordCard */,
 				CE6637CB282EDB740047F98F /* WordCardTask */,
+				CE8906372870ADFE00391815 /* Statistics */,
+				CE8906382870AE0A00391815 /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -292,6 +300,22 @@
 				CE013BBF2856097C00D1EBB1 /* WordCardTaskMode.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CE8906372870ADFE00391815 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				CE8906392870AE1D00391815 /* Statistics.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		CE8906382870AE0A00391815 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE89063B2870AEFC00391815 /* Settings.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		CECA5539283BD1D900980760 /* Common UI */ = {
@@ -396,6 +420,7 @@
 				CE7DE46527F8603600399DB4 /* WordCardTopic.swift in Sources */,
 				CE6C50B12829527200AA26C2 /* AppDelegate.swift in Sources */,
 				CE38C0A627F0A33E004B200D /* NewWordCardBack.swift in Sources */,
+				CE89063C2870AEFC00391815 /* Settings.swift in Sources */,
 				CE38C0A427F0A331004B200D /* NewWordCardFront.swift in Sources */,
 				CE6637CD282EDBA20047F98F /* WordCardTaskContainer.swift in Sources */,
 				CE7DE46027F85C9300399DB4 /* NewWordCardViewModel.swift in Sources */,
@@ -418,6 +443,7 @@
 				CE3841DA2806090A002B7465 /* View+Extensions.swift in Sources */,
 				CE013BB92855F41900D1EBB1 /* UserService.swift in Sources */,
 				CE7DE46C27F9A77700399DB4 /* ColorfulRectangleView.swift in Sources */,
+				CE89063A2870AE1D00391815 /* Statistics.swift in Sources */,
 				CE013BC228560A1800D1EBB1 /* RememberForgotTask.swift in Sources */,
 				CE013BC428560A2100D1EBB1 /* RememberForgotTaskViewModel.swift in Sources */,
 				CE6C50AB28294D7700AA26C2 /* ServiceDependency.swift in Sources */,

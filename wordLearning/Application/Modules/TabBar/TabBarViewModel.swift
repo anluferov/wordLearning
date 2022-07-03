@@ -12,15 +12,18 @@ class TabBarViewModel: ObservableObject {
     enum State {
         case mainNonActiveTask
         case mainActiveTask
+        case statictic
         case account
     }
     
-    enum TabBarItem {
+    enum TabBarItem: String {
         case main
+        case statistic
         case account
     }
     
-    @Published var isTabBardShown: Bool = true
+    @Published var isTabBarShown: Bool = true
+    @Published var selectedTabBarItem: TabBarItem = .main
     
     private var state = CurrentValueSubject<State, Never>(.mainNonActiveTask)
     
@@ -31,11 +34,17 @@ class TabBarViewModel: ObservableObject {
             .sink { [unowned self] newState in
                 switch newState {
                 case .mainNonActiveTask:
-                    self.isTabBardShown = true
+                    self.isTabBarShown = true
+                    self.selectedTabBarItem = .main
                 case .mainActiveTask:
-                    self.isTabBardShown = false
+                    self.isTabBarShown = false
+                    self.selectedTabBarItem = .main
                 case .account:
-                    self.isTabBardShown = true
+                    self.isTabBarShown = true
+                    self.selectedTabBarItem = .account
+                case .statictic:
+                    self.isTabBarShown = true
+                    self.selectedTabBarItem = .statistic
                 }
             }
             .store(in: &cancelable)
@@ -45,6 +54,8 @@ class TabBarViewModel: ObservableObject {
         switch tabBarItem {
         case .main:
             state.value = .mainNonActiveTask
+        case .statistic:
+            state.value = .statictic
         case .account:
             state.value = .account
         }

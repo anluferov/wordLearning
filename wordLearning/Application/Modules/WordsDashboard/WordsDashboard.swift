@@ -28,7 +28,6 @@ struct WordsDashboard: View {
             } else {
                 topicsDashboard
             }
-            motivationBlock
             Spacer()
         }
         .onAppear(perform: {
@@ -87,20 +86,6 @@ struct WordsDashboard: View {
             .padding()
             .overlay(
                 Text("Your cards collection be shown here after adding first word card.")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 20, weight: .thin, design: .rounded))
-            )
-    }
-    
-    var motivationBlock: some View {
-        Rectangle()
-            .cornerRadius(20.0)
-            .foregroundColor(.white)
-            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 0)
-            .frame(height: 200.0)
-            .padding()
-            .overlay(
-                Text("Motivation phrase about learning words")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 20, weight: .thin, design: .rounded))
             )
